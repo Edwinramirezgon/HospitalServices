@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2419252a9337472da2bf1f3f24a86052" Name="Diagram1">
+        <EntityTypeShape EntityType="hospital_dbModel.Alta" Width="1.5" PointX="15" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Cita" Width="1.5" PointX="9.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.DetallesFormula" Width="1.5" PointX="12" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.EventosMedico" Width="1.5" PointX="7.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Facturacione" Width="1.5" PointX="9.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Formula" Width="1.5" PointX="9.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Habitacione" Width="1.5" PointX="10.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Hospitalizacione" Width="1.5" PointX="12.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Medicamento" Width="1.5" PointX="9.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Medico" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Paciente" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Pago" Width="1.5" PointX="12" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Persona" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Urgencia" Width="1.5" PointX="15" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital_dbModel.Usuario" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <AssociationConnector Association="hospital_dbModel.FK__Altas__id_hospit__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Altas__id_medico__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Citas__id_evento__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__DetallesF__id_fo__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__DetallesF__id_me__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__EventosMe__id_me__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__EventosMe__id_pa__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Facturaci__id_ev__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Formulas__id_eve__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Hospitali__id_ev__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Urgencias__id_ev__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Facturaci__id_pa__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Pagos__id_factur__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Formulas__id_med__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Formulas__id_pac__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Hospitali__habit__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Urgencias__id_ho__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Medicos__id_usua__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Pacientes__id_pe__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital_dbModel.FK__Usuarios__id_per__3D5E1FD2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
