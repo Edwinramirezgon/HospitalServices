@@ -30,10 +30,16 @@ namespace HospitalServices.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [JsonIgnore]
+ 
         public virtual ICollection<DetallesFormula> DetallesFormulas { get; set; }
+
+        [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }
+
+        [JsonIgnore]
         public virtual Medico Medico { get; set; }
+
+        [JsonIgnore]
         public virtual Paciente Paciente { get; set; }
     }
 }

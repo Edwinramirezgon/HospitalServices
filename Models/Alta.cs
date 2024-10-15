@@ -9,6 +9,7 @@
 
 namespace HospitalServices.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -20,8 +21,11 @@ namespace HospitalServices.Models
         public Nullable<System.DateTime> fecha_alta { get; set; }
         public string descripcion_alta { get; set; }
         public string recomendaciones { get; set; }
-    
+
+        [JsonIgnore]
         public virtual Hospitalizacione Hospitalizacione { get; set; }
+
+        [JsonIgnore]
         public virtual Medico Medico { get; set; }
     }
 }

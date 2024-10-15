@@ -9,6 +9,7 @@
 
 namespace HospitalServices.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -20,7 +21,8 @@ namespace HospitalServices.Models
         public string especialidad { get; set; }
         public string motivo { get; set; }
         public string estado_cita { get; set; }
-    
+
+        [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }
     }
 }

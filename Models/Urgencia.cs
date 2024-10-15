@@ -9,6 +9,7 @@
 
 namespace HospitalServices.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -18,8 +19,12 @@ namespace HospitalServices.Models
         public int id_evento { get; set; }
         public string estado_urgencia { get; set; }
         public Nullable<int> id_hospitalizacion { get; set; }
-    
+
+
+        [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }
+
+        [JsonIgnore]
         public virtual Hospitalizacione Hospitalizacione { get; set; }
     }
 }

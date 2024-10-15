@@ -29,13 +29,17 @@ namespace HospitalServices.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [JsonIgnore]
+
         public virtual ICollection<Alta> Altas { get; set; }
+
+        [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }
+
+        [JsonIgnore]
         public virtual Habitacione Habitacione { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [JsonIgnore]
+
         public virtual ICollection<Urgencia> Urgencias { get; set; }
     }
 }

@@ -33,25 +33,29 @@ namespace HospitalServices.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [JsonIgnore]
+   
         public virtual ICollection<Cita> Citas { get; set; }
+
+        [JsonIgnore]
         public virtual Medico Medico { get; set; }
+
+        [JsonIgnore]
         public virtual Paciente Paciente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [JsonIgnore]
+   
         public virtual ICollection<Facturacione> Facturaciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [JsonIgnore]
+    
         public virtual ICollection<Formula> Formulas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [JsonIgnore]
+       
         public virtual ICollection<Hospitalizacione> Hospitalizaciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [JsonIgnore]
+     
         public virtual ICollection<Urgencia> Urgencias { get; set; }
     }
 }

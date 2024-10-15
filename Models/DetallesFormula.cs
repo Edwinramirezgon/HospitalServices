@@ -9,6 +9,7 @@
 
 namespace HospitalServices.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -19,8 +20,11 @@ namespace HospitalServices.Models
         public int id_medicamento { get; set; }
         public Nullable<int> cantidad { get; set; }
         public string dosis { get; set; }
-    
+
+        [JsonIgnore]
         public virtual Formula Formula { get; set; }
+
+        [JsonIgnore]
         public virtual Medicamento Medicamento { get; set; }
     }
 }
