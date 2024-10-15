@@ -15,6 +15,7 @@ namespace HospitalServices.Models
     public partial class Pago
     {
         public int id_pago { get; set; }
+        public int id_factura { get; set; }
         public string metodo_pago { get; set; }
         public double monto_pagado { get; set; }
         public Nullable<System.DateTime> fecha_pago { get; set; }

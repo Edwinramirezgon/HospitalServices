@@ -15,7 +15,9 @@ namespace HospitalServices.Models
     public partial class Urgencia
     {
         public int id_urgencia { get; set; }
+        public int id_evento { get; set; }
         public string estado_urgencia { get; set; }
+        public Nullable<int> id_hospitalizacion { get; set; }
     
         public virtual EventosMedico EventosMedico { get; set; }
         public virtual Hospitalizacione Hospitalizacione { get; set; }

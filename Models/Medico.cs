@@ -9,6 +9,7 @@
 
 namespace HospitalServices.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -23,15 +24,22 @@ namespace HospitalServices.Models
         }
     
         public int id_medico { get; set; }
+        public int id_usuario { get; set; }
         public string especialidad { get; set; }
         public string horario { get; set; }
         public string telefono_contacto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [JsonIgnore]
         public virtual ICollection<Alta> Altas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [JsonIgnore]
         public virtual ICollection<EventosMedico> EventosMedicos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [JsonIgnore]
         public virtual ICollection<Formula> Formulas { get; set; }
         public virtual Usuario Usuario { get; set; }
     }

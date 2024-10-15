@@ -15,6 +15,7 @@ namespace HospitalServices.Models
     public partial class Cita
     {
         public int id_cita { get; set; }
+        public int id_evento { get; set; }
         public Nullable<System.TimeSpan> hora_cita { get; set; }
         public string especialidad { get; set; }
         public string motivo { get; set; }

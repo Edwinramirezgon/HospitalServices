@@ -9,6 +9,7 @@
 
 namespace HospitalServices.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -27,6 +28,8 @@ namespace HospitalServices.Models
         public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [JsonIgnore]
         public virtual ICollection<Hospitalizacione> Hospitalizaciones { get; set; }
     }
 }

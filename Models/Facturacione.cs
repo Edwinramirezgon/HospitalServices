@@ -9,6 +9,7 @@
 
 namespace HospitalServices.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -21,6 +22,8 @@ namespace HospitalServices.Models
         }
     
         public int id_factura { get; set; }
+        public int id_paciente { get; set; }
+        public int id_evento { get; set; }
         public double total { get; set; }
         public string metodo_pago { get; set; }
         public Nullable<System.DateTime> fecha_emision { get; set; }
@@ -29,6 +32,8 @@ namespace HospitalServices.Models
         public virtual EventosMedico EventosMedico { get; set; }
         public virtual Paciente Paciente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [JsonIgnore]
         public virtual ICollection<Pago> Pagos { get; set; }
     }
 }

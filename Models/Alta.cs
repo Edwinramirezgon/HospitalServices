@@ -15,6 +15,8 @@ namespace HospitalServices.Models
     public partial class Alta
     {
         public int id_alta { get; set; }
+        public int id_hospitalizacion { get; set; }
+        public int id_medico { get; set; }
         public Nullable<System.DateTime> fecha_alta { get; set; }
         public string descripcion_alta { get; set; }
         public string recomendaciones { get; set; }

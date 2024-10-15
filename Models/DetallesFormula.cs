@@ -15,6 +15,8 @@ namespace HospitalServices.Models
     public partial class DetallesFormula
     {
         public int id_detalle_formula { get; set; }
+        public int id_formula { get; set; }
+        public int id_medicamento { get; set; }
         public Nullable<int> cantidad { get; set; }
         public string dosis { get; set; }
     
