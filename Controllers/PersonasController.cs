@@ -48,5 +48,6 @@ namespace HospitalServices.Controllers
             clsPersona _persona = new clsPersona();
             return _persona.Consultar(id);
         }
+       
     }
 }

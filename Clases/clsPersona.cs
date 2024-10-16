@@ -59,5 +59,7 @@ namespace HospitalServices.Clases
 
             return dbSuper.Personas.FirstOrDefault(c => c.id_persona == id);
         }
+
+
     }
 }

@@ -48,5 +48,14 @@ namespace HospitalServices.Controllers
             clsPaciente _paciente = new clsPaciente();
             return _paciente.Consultar(id);
         }
+
+
+        [HttpGet]
+        [Route("LlenarTabla")]
+        public IQueryable LlenarTabla()
+        {
+            clsPaciente paciente = new clsPaciente();
+            return paciente.LLenarTabla();
+        }
     }
 }
