@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Pacientes.AddOrUpdate(paciente);
+                Paciente _paciente = Consultar(paciente.id_paciente);
+                if (_paciente != null)
+                {
+                    dbSuper.Pacientes.AddOrUpdate(paciente);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de el paciente con id: " + paciente.id_paciente;
+                }
+                else
+                {
+                    return "El paciente que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {
@@ -77,7 +85,7 @@ namespace HospitalServices.Clases
                        TELEFONO = pe.telefono,
                        EMAIL = pe.email,
                        GENERO = pe.genero,
-                       CONTACTO_DE_EMERGEMCIA = pa.contacto_emergencia,
+                       CONTACTO_DE_EMERGENCIA = pa.contacto_emergencia,
                        ALERGIAS = pa.alergias,
                        ANTECEDENTES = pa.antecedentes_medicos
                    

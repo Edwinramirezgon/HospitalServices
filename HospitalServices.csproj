@@ -199,7 +199,7 @@
     <Compile Include="Controllers\EventosMedicosController.cs" />
     <Compile Include="Controllers\FacturacionesController.cs" />
     <Compile Include="Controllers\FormulasController.cs" />
-    <Compile Include="Controllers\Habitaciones.cs" />
+    <Compile Include="Controllers\HabitacionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalizacionesController.cs" />
     <Compile Include="Controllers\MedicamentosController.cs" />

@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Urgencias.AddOrUpdate(urgencia);
+                Urgencia _urgencia = Consultar(urgencia.id_urgencia);
+                if (_urgencia != null)
+                {
+                    dbSuper.Urgencias.AddOrUpdate(urgencia);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de la urgencia con id: " + urgencia.id_urgencia;
+                }
+                else
+                {
+                    return "La urgencia que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {

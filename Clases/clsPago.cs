@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Pagos.AddOrUpdate(pago);
+                Pago _pago = Consultar(pago.id_pago);
+                if (_pago != null)
+                {
+                    dbSuper.Pagos.AddOrUpdate(pago);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de el pago con id: " + pago.id_pago;
+                }
+                else
+                {
+                    return "El pago que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {

@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.DetallesFormulas.AddOrUpdate(detalle);
+                DetallesFormula _detalle = Consultar(detalle.id_detalle_formula);
+                if (_detalle != null)
+                {
+                    dbSuper.DetallesFormulas.AddOrUpdate(detalle);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los detalles de la formula con id: " + detalle.id_detalle_formula;
+                }
+                else
+                {
+                    return "El Detalle de la formula que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {

@@ -48,5 +48,13 @@ namespace HospitalServices.Controllers
             clsHabitacione _habitacion = new clsHabitacione();
             return _habitacion.Consultar(id);
         }
+
+        [HttpGet]
+        [Route("LlenarCombo")]
+        public List<Habitacione> LlenarCombo()
+        {
+            clsHabitacione habitacion = new clsHabitacione();
+            return habitacion.LlenarCombo();
+        }
     }
 }

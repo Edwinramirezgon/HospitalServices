@@ -33,9 +33,18 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Medicos.AddOrUpdate(medico);
+
+                Medico _medico = Consultar(medico.id_medico);
+                if (_medico != null)
+                {
+                    dbSuper.Medicos.AddOrUpdate(medico);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de el medico con id: " + medico.id_medico;
+                }
+                else
+                {
+                    return "El medico que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {

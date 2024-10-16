@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Habitaciones.AddOrUpdate(habitacion);
+                Habitacione _habitacion = Consultar(habitacion.id_habitacion);
+                if (_habitacion != null)
+                {
+                    dbSuper.Habitaciones.AddOrUpdate(habitacion);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de la habitacion con id: " + habitacion.id_habitacion;
+                }
+                else
+                {
+                    return "La habitacion que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {
@@ -58,6 +66,13 @@ namespace HospitalServices.Clases
         {
 
             return dbSuper.Habitaciones.FirstOrDefault(c => c.id_habitacion == id);
+        }
+
+        public List<Habitacione> LlenarCombo()
+        {
+            return dbSuper.Habitaciones                
+                .OrderBy(t => t.numero_habitacion)
+                .ToList();
         }
     }
 }

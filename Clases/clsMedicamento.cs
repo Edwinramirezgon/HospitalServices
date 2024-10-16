@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Medicamentos.AddOrUpdate(medicamento);
+                Medicamento _medicamento = Consultar(medicamento.id_medicamento);
+                if (_medicamento != null)
+                {
+                    dbSuper.Medicamentos.AddOrUpdate(medicamento);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de el medicamento con id: " + medicamento.id_medicamento;
+                }
+                else
+                {
+                    return "El código del producto que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {

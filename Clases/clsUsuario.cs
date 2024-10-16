@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Usuarios.AddOrUpdate(usuario);
+                Usuario _usuario = Consultar(usuario.id_usuario);
+                if (_usuario != null)
+                {
+                    dbSuper.Usuarios.AddOrUpdate(usuario);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de el usuario con id: " + usuario.id_usuario;
+                }
+                else
+                {
+                    return "El usuario que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {

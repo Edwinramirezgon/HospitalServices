@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Altas.AddOrUpdate(alta);
+                Alta _alta = Consultar(alta.id_alta);
+                if (_alta != null)
+                {
+                    dbSuper.Altas.AddOrUpdate(alta);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de el alta con id: " + alta.id_alta;
+                }
+                else
+                {
+                    return "El alta que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {

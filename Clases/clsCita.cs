@@ -33,9 +33,18 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Citas.AddOrUpdate(cita);
+                Cita _cita = Consultar(cita.id_cita);
+                if (_cita != null)
+                {
+                    dbSuper.Citas.AddOrUpdate(cita);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de la cita con id: " + cita.id_cita;
+                }
+                else
+                {
+      
+                    return "La cita que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {

@@ -33,9 +33,19 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Facturaciones.AddOrUpdate(facturacion);
+
+                Facturacione _facturacion = Consultar(facturacion.id_factura);
+                if (_facturacion != null)
+                {
+                    dbSuper.Facturaciones.AddOrUpdate(facturacion);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de la factura con id: " + facturacion.id_factura;
+                }
+                else
+                {
+                    return "La factura que se quiere actualizar, no existe en la base de datos";
+                }
+
             }
             catch (Exception ex)
             {

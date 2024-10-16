@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.EventosMedicos.AddOrUpdate(evento);
+                EventosMedico _evento = Consultar(evento.id_evento);
+                if (_evento != null)
+                {
+                    dbSuper.EventosMedicos.AddOrUpdate(evento);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de el evento medico: " + evento.id_evento;
+                }
+                else
+                {
+                    return "El evento medico que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {

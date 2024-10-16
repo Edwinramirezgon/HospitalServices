@@ -33,9 +33,17 @@ namespace HospitalServices.Clases
 
             try
             {
-                dbSuper.Hospitalizaciones.AddOrUpdate(hospitalizacion);
+                Hospitalizacione _hospitalizacion = Consultar(hospitalizacion.id_hospitalizacion);
+                if (_hospitalizacion != null)
+                {
+                    dbSuper.Hospitalizaciones.AddOrUpdate(hospitalizacion);
                 dbSuper.SaveChanges();
                 return "Se actualizaron los datos de la hospitalizacion con id: " + hospitalizacion.id_hospitalizacion;
+                }
+                else
+                {
+                    return "La hospitalizacion que se quiere actualizar, no existe en la base de datos";
+                }
             }
             catch (Exception ex)
             {
