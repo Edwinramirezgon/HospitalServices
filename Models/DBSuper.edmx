@@ -76,7 +76,7 @@
           </Key>
           <Property Name="id_habitacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="numero_habitacion" Type="int" Nullable="false" />
-          <Property Name="tipo_habitacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_tipo_habitacion" Type="int" Nullable="false" />
           <Property Name="estado_habitacion" Type="nvarchar" MaxLength="50" />
           <Property Name="descripcion" Type="text" />
         </EntityType>
@@ -127,6 +127,13 @@
           <Property Name="monto_pagado" Type="float" Nullable="false" />
           <Property Name="fecha_pago" Type="date" />
         </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="id_pais" />
+          </Key>
+          <Property Name="id_pais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="Personas">
           <Key>
             <PropertyRef Name="id_persona" />
@@ -139,6 +146,14 @@
           <Property Name="telefono" Type="nvarchar" MaxLength="20" />
           <Property Name="email" Type="nvarchar" MaxLength="100" />
           <Property Name="genero" Type="char" MaxLength="1" />
+          <Property Name="id_pais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoHabitaciones">
+          <Key>
+            <PropertyRef Name="id_tipo_habitacion" />
+          </Key>
+          <Property Name="id_tipo_habitacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Urgencias">
           <Key>
@@ -155,11 +170,11 @@
           </Key>
           <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_persona" Type="bigint" Nullable="false" />
-          <Property Name="usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="pass" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="50" />
+          <Property Name="pass" Type="nvarchar" MaxLength="255" />
           <Property Name="rol" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__Altas__id_hospit__534D60F1">
+        <Association Name="FK__Altas__id_hospit__5535A963">
           <End Role="Hospitalizaciones" Type="Self.Hospitalizaciones" Multiplicity="1" />
           <End Role="Altas" Type="Self.Altas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -171,7 +186,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Altas__id_medico__5441852A">
+        <Association Name="FK__Altas__id_medico__5629CD9C">
           <End Role="Medicos" Type="Self.Medicos" Multiplicity="1" />
           <End Role="Altas" Type="Self.Altas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -183,7 +198,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Citas__id_evento__46E78A0C">
+        <Association Name="FK__Citas__id_evento__6A30C649">
           <End Role="EventosMedicos" Type="Self.EventosMedicos" Multiplicity="1" />
           <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -195,7 +210,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetallesF__id_fo__619B8048">
+        <Association Name="FK__DetallesF__id_fo__6383C8BA">
           <End Role="Formulas" Type="Self.Formulas" Multiplicity="1" />
           <End Role="DetallesFormulas" Type="Self.DetallesFormulas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,7 +222,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetallesF__id_me__628FA481">
+        <Association Name="FK__DetallesF__id_me__6477ECF3">
           <End Role="Medicamentos" Type="Self.Medicamentos" Multiplicity="1" />
           <End Role="DetallesFormulas" Type="Self.DetallesFormulas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -219,7 +234,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EventosMe__id_me__440B1D61">
+        <Association Name="FK__EventosMe__id_me__45F365D3">
           <End Role="Medicos" Type="Self.Medicos" Multiplicity="1" />
           <End Role="EventosMedicos" Type="Self.EventosMedicos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -231,7 +246,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EventosMe__id_pa__4316F928">
+        <Association Name="FK__EventosMe__id_pa__44FF419A">
           <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1" />
           <End Role="EventosMedicos" Type="Self.EventosMedicos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -243,7 +258,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturaci__id_ev__5812160E">
+        <Association Name="FK__Facturaci__id_ev__59FA5E80">
           <End Role="EventosMedicos" Type="Self.EventosMedicos" Multiplicity="1" />
           <End Role="Facturaciones" Type="Self.Facturaciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -255,7 +270,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturaci__id_pa__571DF1D5">
+        <Association Name="FK__Facturaci__id_pa__59063A47">
           <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1" />
           <End Role="Facturaciones" Type="Self.Facturaciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -267,7 +282,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Formulas__id_eve__5CD6CB2B">
+        <Association Name="FK__Formulas__id_eve__5EBF139D">
           <End Role="EventosMedicos" Type="Self.EventosMedicos" Multiplicity="1" />
           <End Role="Formulas" Type="Self.Formulas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -279,7 +294,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Formulas__id_med__5BE2A6F2">
+        <Association Name="FK__Formulas__id_med__5DCAEF64">
           <End Role="Medicos" Type="Self.Medicos" Multiplicity="1" />
           <End Role="Formulas" Type="Self.Formulas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -291,7 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Formulas__id_pac__5AEE82B9">
+        <Association Name="FK__Formulas__id_pac__5CD6CB2B">
           <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1" />
           <End Role="Formulas" Type="Self.Formulas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -303,7 +318,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hospitali__habit__4CA06362">
+        <Association Name="FK__Habitacio__id_ti__4AB81AF0">
+          <End Role="TipoHabitaciones" Type="Self.TipoHabitaciones" Multiplicity="1" />
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoHabitaciones">
+              <PropertyRef Name="id_tipo_habitacion" />
+            </Principal>
+            <Dependent Role="Habitaciones">
+              <PropertyRef Name="id_tipo_habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hospitali__habit__4E88ABD4">
           <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
           <End Role="Hospitalizaciones" Type="Self.Hospitalizaciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -315,7 +342,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hospitali__id_ev__4BAC3F29">
+        <Association Name="FK__Hospitali__id_ev__4D94879B">
           <End Role="EventosMedicos" Type="Self.EventosMedicos" Multiplicity="1" />
           <End Role="Hospitalizaciones" Type="Self.Hospitalizaciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -327,7 +354,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medicos__id_usua__403A8C7D">
+        <Association Name="FK__Medicos__id_usua__4222D4EF">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
           <End Role="Medicos" Type="Self.Medicos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -339,7 +366,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pacientes__id_pe__398D8EEE">
+        <Association Name="FK__Pacientes__id_pe__3C69FB99">
           <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
           <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -351,7 +378,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pagos__id_factur__656C112C">
+        <Association Name="FK__Pagos__id_factur__6754599E">
           <End Role="Facturaciones" Type="Self.Facturaciones" Multiplicity="1" />
           <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -363,7 +390,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Urgencias__id_ev__4F7CD00D">
+        <Association Name="FK__Personas__id_pai__398D8EEE">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="1" />
+          <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Urgencias__id_ev__5165187F">
           <End Role="EventosMedicos" Type="Self.EventosMedicos" Multiplicity="1" />
           <End Role="Urgencias" Type="Self.Urgencias" Multiplicity="*" />
           <ReferentialConstraint>
@@ -375,7 +414,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Urgencias__id_ho__5070F446">
+        <Association Name="FK__Urgencias__id_ho__52593CB8">
           <End Role="Hospitalizaciones" Type="Self.Hospitalizaciones" Multiplicity="0..1" />
           <End Role="Urgencias" Type="Self.Urgencias" Multiplicity="*" />
           <ReferentialConstraint>
@@ -387,7 +426,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuarios__id_per__3D5E1FD2">
+        <Association Name="FK__Usuarios__id_per__3F466844">
           <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
           <ReferentialConstraint>
@@ -412,86 +451,96 @@
           <EntitySet Name="Medicos" EntityType="Self.Medicos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pacientes" EntityType="Self.Pacientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoHabitaciones" EntityType="Self.TipoHabitaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Urgencias" EntityType="Self.Urgencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Altas__id_hospit__534D60F1" Association="Self.FK__Altas__id_hospit__534D60F1">
+          <AssociationSet Name="FK__Altas__id_hospit__5535A963" Association="Self.FK__Altas__id_hospit__5535A963">
             <End Role="Hospitalizaciones" EntitySet="Hospitalizaciones" />
             <End Role="Altas" EntitySet="Altas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Altas__id_medico__5441852A" Association="Self.FK__Altas__id_medico__5441852A">
+          <AssociationSet Name="FK__Altas__id_medico__5629CD9C" Association="Self.FK__Altas__id_medico__5629CD9C">
             <End Role="Medicos" EntitySet="Medicos" />
             <End Role="Altas" EntitySet="Altas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Citas__id_evento__46E78A0C" Association="Self.FK__Citas__id_evento__46E78A0C">
+          <AssociationSet Name="FK__Citas__id_evento__6A30C649" Association="Self.FK__Citas__id_evento__6A30C649">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Citas" EntitySet="Citas" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetallesF__id_fo__619B8048" Association="Self.FK__DetallesF__id_fo__619B8048">
+          <AssociationSet Name="FK__DetallesF__id_fo__6383C8BA" Association="Self.FK__DetallesF__id_fo__6383C8BA">
             <End Role="Formulas" EntitySet="Formulas" />
             <End Role="DetallesFormulas" EntitySet="DetallesFormulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetallesF__id_me__628FA481" Association="Self.FK__DetallesF__id_me__628FA481">
+          <AssociationSet Name="FK__DetallesF__id_me__6477ECF3" Association="Self.FK__DetallesF__id_me__6477ECF3">
             <End Role="Medicamentos" EntitySet="Medicamentos" />
             <End Role="DetallesFormulas" EntitySet="DetallesFormulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__EventosMe__id_me__440B1D61" Association="Self.FK__EventosMe__id_me__440B1D61">
+          <AssociationSet Name="FK__EventosMe__id_me__45F365D3" Association="Self.FK__EventosMe__id_me__45F365D3">
             <End Role="Medicos" EntitySet="Medicos" />
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
           </AssociationSet>
-          <AssociationSet Name="FK__EventosMe__id_pa__4316F928" Association="Self.FK__EventosMe__id_pa__4316F928">
+          <AssociationSet Name="FK__EventosMe__id_pa__44FF419A" Association="Self.FK__EventosMe__id_pa__44FF419A">
             <End Role="Pacientes" EntitySet="Pacientes" />
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturaci__id_ev__5812160E" Association="Self.FK__Facturaci__id_ev__5812160E">
+          <AssociationSet Name="FK__Facturaci__id_ev__59FA5E80" Association="Self.FK__Facturaci__id_ev__59FA5E80">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Facturaciones" EntitySet="Facturaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturaci__id_pa__571DF1D5" Association="Self.FK__Facturaci__id_pa__571DF1D5">
+          <AssociationSet Name="FK__Facturaci__id_pa__59063A47" Association="Self.FK__Facturaci__id_pa__59063A47">
             <End Role="Pacientes" EntitySet="Pacientes" />
             <End Role="Facturaciones" EntitySet="Facturaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Formulas__id_eve__5CD6CB2B" Association="Self.FK__Formulas__id_eve__5CD6CB2B">
+          <AssociationSet Name="FK__Formulas__id_eve__5EBF139D" Association="Self.FK__Formulas__id_eve__5EBF139D">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Formulas" EntitySet="Formulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Formulas__id_med__5BE2A6F2" Association="Self.FK__Formulas__id_med__5BE2A6F2">
+          <AssociationSet Name="FK__Formulas__id_med__5DCAEF64" Association="Self.FK__Formulas__id_med__5DCAEF64">
             <End Role="Medicos" EntitySet="Medicos" />
             <End Role="Formulas" EntitySet="Formulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Formulas__id_pac__5AEE82B9" Association="Self.FK__Formulas__id_pac__5AEE82B9">
+          <AssociationSet Name="FK__Formulas__id_pac__5CD6CB2B" Association="Self.FK__Formulas__id_pac__5CD6CB2B">
             <End Role="Pacientes" EntitySet="Pacientes" />
             <End Role="Formulas" EntitySet="Formulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hospitali__habit__4CA06362" Association="Self.FK__Hospitali__habit__4CA06362">
+          <AssociationSet Name="FK__Habitacio__id_ti__4AB81AF0" Association="Self.FK__Habitacio__id_ti__4AB81AF0">
+            <End Role="TipoHabitaciones" EntitySet="TipoHabitaciones" />
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hospitali__habit__4E88ABD4" Association="Self.FK__Hospitali__habit__4E88ABD4">
             <End Role="Habitaciones" EntitySet="Habitaciones" />
             <End Role="Hospitalizaciones" EntitySet="Hospitalizaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hospitali__id_ev__4BAC3F29" Association="Self.FK__Hospitali__id_ev__4BAC3F29">
+          <AssociationSet Name="FK__Hospitali__id_ev__4D94879B" Association="Self.FK__Hospitali__id_ev__4D94879B">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Hospitalizaciones" EntitySet="Hospitalizaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medicos__id_usua__403A8C7D" Association="Self.FK__Medicos__id_usua__403A8C7D">
+          <AssociationSet Name="FK__Medicos__id_usua__4222D4EF" Association="Self.FK__Medicos__id_usua__4222D4EF">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Medicos" EntitySet="Medicos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pacientes__id_pe__398D8EEE" Association="Self.FK__Pacientes__id_pe__398D8EEE">
+          <AssociationSet Name="FK__Pacientes__id_pe__3C69FB99" Association="Self.FK__Pacientes__id_pe__3C69FB99">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Pacientes" EntitySet="Pacientes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pagos__id_factur__656C112C" Association="Self.FK__Pagos__id_factur__656C112C">
+          <AssociationSet Name="FK__Pagos__id_factur__6754599E" Association="Self.FK__Pagos__id_factur__6754599E">
             <End Role="Facturaciones" EntitySet="Facturaciones" />
             <End Role="Pagos" EntitySet="Pagos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Urgencias__id_ev__4F7CD00D" Association="Self.FK__Urgencias__id_ev__4F7CD00D">
+          <AssociationSet Name="FK__Personas__id_pai__398D8EEE" Association="Self.FK__Personas__id_pai__398D8EEE">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Urgencias__id_ev__5165187F" Association="Self.FK__Urgencias__id_ev__5165187F">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Urgencias" EntitySet="Urgencias" />
           </AssociationSet>
-          <AssociationSet Name="FK__Urgencias__id_ho__5070F446" Association="Self.FK__Urgencias__id_ho__5070F446">
+          <AssociationSet Name="FK__Urgencias__id_ho__52593CB8" Association="Self.FK__Urgencias__id_ho__52593CB8">
             <End Role="Hospitalizaciones" EntitySet="Hospitalizaciones" />
             <End Role="Urgencias" EntitySet="Urgencias" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuarios__id_per__3D5E1FD2" Association="Self.FK__Usuarios__id_per__3D5E1FD2">
+          <AssociationSet Name="FK__Usuarios__id_per__3F466844" Association="Self.FK__Usuarios__id_per__3F466844">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
@@ -511,8 +560,8 @@
           <Property Name="fecha_alta" Type="DateTime" Precision="0" />
           <Property Name="descripcion_alta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="recomendaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Hospitalizacione" Relationship="Self.FK__Altas__id_hospit__534D60F1" FromRole="Altas" ToRole="Hospitalizaciones" />
-          <NavigationProperty Name="Medico" Relationship="Self.FK__Altas__id_medico__5441852A" FromRole="Altas" ToRole="Medicos" />
+          <NavigationProperty Name="Hospitalizacione" Relationship="Self.FK__Altas__id_hospit__5535A963" FromRole="Altas" ToRole="Hospitalizaciones" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__Altas__id_medico__5629CD9C" FromRole="Altas" ToRole="Medicos" />
         </EntityType>
         <EntityType Name="Cita">
           <Key>
@@ -524,7 +573,7 @@
           <Property Name="especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="estado_cita" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Citas__id_evento__46E78A0C" FromRole="Citas" ToRole="EventosMedicos" />
+          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Citas__id_evento__6A30C649" FromRole="Citas" ToRole="EventosMedicos" />
         </EntityType>
         <EntityType Name="DetallesFormula">
           <Key>
@@ -535,8 +584,8 @@
           <Property Name="id_medicamento" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" />
           <Property Name="dosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Formula" Relationship="Self.FK__DetallesF__id_fo__619B8048" FromRole="DetallesFormulas" ToRole="Formulas" />
-          <NavigationProperty Name="Medicamento" Relationship="Self.FK__DetallesF__id_me__628FA481" FromRole="DetallesFormulas" ToRole="Medicamentos" />
+          <NavigationProperty Name="Formula" Relationship="Self.FK__DetallesF__id_fo__6383C8BA" FromRole="DetallesFormulas" ToRole="Formulas" />
+          <NavigationProperty Name="Medicamento" Relationship="Self.FK__DetallesF__id_me__6477ECF3" FromRole="DetallesFormulas" ToRole="Medicamentos" />
         </EntityType>
         <EntityType Name="EventosMedico">
           <Key>
@@ -547,13 +596,13 @@
           <Property Name="id_medico" Type="Int32" Nullable="false" />
           <Property Name="fecha_evento" Type="DateTime" Precision="0" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__id_evento__46E78A0C" FromRole="EventosMedicos" ToRole="Citas" />
-          <NavigationProperty Name="Medico" Relationship="Self.FK__EventosMe__id_me__440B1D61" FromRole="EventosMedicos" ToRole="Medicos" />
-          <NavigationProperty Name="Paciente" Relationship="Self.FK__EventosMe__id_pa__4316F928" FromRole="EventosMedicos" ToRole="Pacientes" />
-          <NavigationProperty Name="Facturaciones" Relationship="Self.FK__Facturaci__id_ev__5812160E" FromRole="EventosMedicos" ToRole="Facturaciones" />
-          <NavigationProperty Name="Formulas" Relationship="Self.FK__Formulas__id_eve__5CD6CB2B" FromRole="EventosMedicos" ToRole="Formulas" />
-          <NavigationProperty Name="Hospitalizaciones" Relationship="Self.FK__Hospitali__id_ev__4BAC3F29" FromRole="EventosMedicos" ToRole="Hospitalizaciones" />
-          <NavigationProperty Name="Urgencias" Relationship="Self.FK__Urgencias__id_ev__4F7CD00D" FromRole="EventosMedicos" ToRole="Urgencias" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__id_evento__6A30C649" FromRole="EventosMedicos" ToRole="Citas" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__EventosMe__id_me__45F365D3" FromRole="EventosMedicos" ToRole="Medicos" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__EventosMe__id_pa__44FF419A" FromRole="EventosMedicos" ToRole="Pacientes" />
+          <NavigationProperty Name="Facturaciones" Relationship="Self.FK__Facturaci__id_ev__59FA5E80" FromRole="EventosMedicos" ToRole="Facturaciones" />
+          <NavigationProperty Name="Formulas" Relationship="Self.FK__Formulas__id_eve__5EBF139D" FromRole="EventosMedicos" ToRole="Formulas" />
+          <NavigationProperty Name="Hospitalizaciones" Relationship="Self.FK__Hospitali__id_ev__4D94879B" FromRole="EventosMedicos" ToRole="Hospitalizaciones" />
+          <NavigationProperty Name="Urgencias" Relationship="Self.FK__Urgencias__id_ev__5165187F" FromRole="EventosMedicos" ToRole="Urgencias" />
         </EntityType>
         <EntityType Name="Facturacione">
           <Key>
@@ -566,9 +615,9 @@
           <Property Name="metodo_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="fecha_emision" Type="DateTime" Precision="0" />
           <Property Name="estado_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Facturaci__id_ev__5812160E" FromRole="Facturaciones" ToRole="EventosMedicos" />
-          <NavigationProperty Name="Paciente" Relationship="Self.FK__Facturaci__id_pa__571DF1D5" FromRole="Facturaciones" ToRole="Pacientes" />
-          <NavigationProperty Name="Pagos" Relationship="Self.FK__Pagos__id_factur__656C112C" FromRole="Facturaciones" ToRole="Pagos" />
+          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Facturaci__id_ev__59FA5E80" FromRole="Facturaciones" ToRole="EventosMedicos" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__Facturaci__id_pa__59063A47" FromRole="Facturaciones" ToRole="Pacientes" />
+          <NavigationProperty Name="Pagos" Relationship="Self.FK__Pagos__id_factur__6754599E" FromRole="Facturaciones" ToRole="Pagos" />
         </EntityType>
         <EntityType Name="Formula">
           <Key>
@@ -580,10 +629,10 @@
           <Property Name="id_evento" Type="Int32" Nullable="false" />
           <Property Name="fecha_formula" Type="DateTime" Precision="0" />
           <Property Name="instrucciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DetallesFormulas" Relationship="Self.FK__DetallesF__id_fo__619B8048" FromRole="Formulas" ToRole="DetallesFormulas" />
-          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Formulas__id_eve__5CD6CB2B" FromRole="Formulas" ToRole="EventosMedicos" />
-          <NavigationProperty Name="Medico" Relationship="Self.FK__Formulas__id_med__5BE2A6F2" FromRole="Formulas" ToRole="Medicos" />
-          <NavigationProperty Name="Paciente" Relationship="Self.FK__Formulas__id_pac__5AEE82B9" FromRole="Formulas" ToRole="Pacientes" />
+          <NavigationProperty Name="DetallesFormulas" Relationship="Self.FK__DetallesF__id_fo__6383C8BA" FromRole="Formulas" ToRole="DetallesFormulas" />
+          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Formulas__id_eve__5EBF139D" FromRole="Formulas" ToRole="EventosMedicos" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__Formulas__id_med__5DCAEF64" FromRole="Formulas" ToRole="Medicos" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__Formulas__id_pac__5CD6CB2B" FromRole="Formulas" ToRole="Pacientes" />
         </EntityType>
         <EntityType Name="Habitacione">
           <Key>
@@ -591,10 +640,11 @@
           </Key>
           <Property Name="id_habitacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="numero_habitacion" Type="Int32" Nullable="false" />
-          <Property Name="tipo_habitacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_tipo_habitacion" Type="Int32" Nullable="false" />
           <Property Name="estado_habitacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Hospitalizaciones" Relationship="Self.FK__Hospitali__habit__4CA06362" FromRole="Habitaciones" ToRole="Hospitalizaciones" />
+          <NavigationProperty Name="TipoHabitacione" Relationship="Self.FK__Habitacio__id_ti__4AB81AF0" FromRole="Habitaciones" ToRole="TipoHabitaciones" />
+          <NavigationProperty Name="Hospitalizaciones" Relationship="Self.FK__Hospitali__habit__4E88ABD4" FromRole="Habitaciones" ToRole="Hospitalizaciones" />
         </EntityType>
         <EntityType Name="Hospitalizacione">
           <Key>
@@ -604,10 +654,10 @@
           <Property Name="id_evento" Type="Int32" Nullable="false" />
           <Property Name="habitacion" Type="Int32" Nullable="false" />
           <Property Name="estado_hospitalizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Altas" Relationship="Self.FK__Altas__id_hospit__534D60F1" FromRole="Hospitalizaciones" ToRole="Altas" />
-          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Hospitali__id_ev__4BAC3F29" FromRole="Hospitalizaciones" ToRole="EventosMedicos" />
-          <NavigationProperty Name="Habitacione" Relationship="Self.FK__Hospitali__habit__4CA06362" FromRole="Hospitalizaciones" ToRole="Habitaciones" />
-          <NavigationProperty Name="Urgencias" Relationship="Self.FK__Urgencias__id_ho__5070F446" FromRole="Hospitalizaciones" ToRole="Urgencias" />
+          <NavigationProperty Name="Altas" Relationship="Self.FK__Altas__id_hospit__5535A963" FromRole="Hospitalizaciones" ToRole="Altas" />
+          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Hospitali__id_ev__4D94879B" FromRole="Hospitalizaciones" ToRole="EventosMedicos" />
+          <NavigationProperty Name="Habitacione" Relationship="Self.FK__Hospitali__habit__4E88ABD4" FromRole="Hospitalizaciones" ToRole="Habitaciones" />
+          <NavigationProperty Name="Urgencias" Relationship="Self.FK__Urgencias__id_ho__52593CB8" FromRole="Hospitalizaciones" ToRole="Urgencias" />
         </EntityType>
         <EntityType Name="Medicamento">
           <Key>
@@ -616,7 +666,7 @@
           <Property Name="id_medicamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DetallesFormulas" Relationship="Self.FK__DetallesF__id_me__628FA481" FromRole="Medicamentos" ToRole="DetallesFormulas" />
+          <NavigationProperty Name="DetallesFormulas" Relationship="Self.FK__DetallesF__id_me__6477ECF3" FromRole="Medicamentos" ToRole="DetallesFormulas" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
@@ -627,10 +677,10 @@
           <Property Name="especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="horario" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="telefono_contacto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Altas" Relationship="Self.FK__Altas__id_medico__5441852A" FromRole="Medicos" ToRole="Altas" />
-          <NavigationProperty Name="EventosMedicos" Relationship="Self.FK__EventosMe__id_me__440B1D61" FromRole="Medicos" ToRole="EventosMedicos" />
-          <NavigationProperty Name="Formulas" Relationship="Self.FK__Formulas__id_med__5BE2A6F2" FromRole="Medicos" ToRole="Formulas" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Medicos__id_usua__403A8C7D" FromRole="Medicos" ToRole="Usuarios" />
+          <NavigationProperty Name="Altas" Relationship="Self.FK__Altas__id_medico__5629CD9C" FromRole="Medicos" ToRole="Altas" />
+          <NavigationProperty Name="EventosMedicos" Relationship="Self.FK__EventosMe__id_me__45F365D3" FromRole="Medicos" ToRole="EventosMedicos" />
+          <NavigationProperty Name="Formulas" Relationship="Self.FK__Formulas__id_med__5DCAEF64" FromRole="Medicos" ToRole="Formulas" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Medicos__id_usua__4222D4EF" FromRole="Medicos" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Paciente">
           <Key>
@@ -641,10 +691,10 @@
           <Property Name="contacto_emergencia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="alergias" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="antecedentes_medicos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EventosMedicos" Relationship="Self.FK__EventosMe__id_pa__4316F928" FromRole="Pacientes" ToRole="EventosMedicos" />
-          <NavigationProperty Name="Facturaciones" Relationship="Self.FK__Facturaci__id_pa__571DF1D5" FromRole="Pacientes" ToRole="Facturaciones" />
-          <NavigationProperty Name="Formulas" Relationship="Self.FK__Formulas__id_pac__5AEE82B9" FromRole="Pacientes" ToRole="Formulas" />
-          <NavigationProperty Name="Persona" Relationship="Self.FK__Pacientes__id_pe__398D8EEE" FromRole="Pacientes" ToRole="Personas" />
+          <NavigationProperty Name="EventosMedicos" Relationship="Self.FK__EventosMe__id_pa__44FF419A" FromRole="Pacientes" ToRole="EventosMedicos" />
+          <NavigationProperty Name="Facturaciones" Relationship="Self.FK__Facturaci__id_pa__59063A47" FromRole="Pacientes" ToRole="Facturaciones" />
+          <NavigationProperty Name="Formulas" Relationship="Self.FK__Formulas__id_pac__5CD6CB2B" FromRole="Pacientes" ToRole="Formulas" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Pacientes__id_pe__3C69FB99" FromRole="Pacientes" ToRole="Personas" />
         </EntityType>
         <EntityType Name="Pago">
           <Key>
@@ -655,7 +705,15 @@
           <Property Name="metodo_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="monto_pagado" Type="Double" Nullable="false" />
           <Property Name="fecha_pago" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Facturacione" Relationship="Self.FK__Pagos__id_factur__656C112C" FromRole="Pagos" ToRole="Facturaciones" />
+          <NavigationProperty Name="Facturacione" Relationship="Self.FK__Pagos__id_factur__6754599E" FromRole="Pagos" ToRole="Facturaciones" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="id_pais" />
+          </Key>
+          <Property Name="id_pais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK__Personas__id_pai__398D8EEE" FromRole="Paises" ToRole="Personas" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -669,8 +727,18 @@
           <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="genero" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Pacientes" Relationship="Self.FK__Pacientes__id_pe__398D8EEE" FromRole="Personas" ToRole="Pacientes" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__id_per__3D5E1FD2" FromRole="Personas" ToRole="Usuarios" />
+          <Property Name="id_pais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK__Pacientes__id_pe__3C69FB99" FromRole="Personas" ToRole="Pacientes" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK__Personas__id_pai__398D8EEE" FromRole="Personas" ToRole="Paises" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__id_per__3F466844" FromRole="Personas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="TipoHabitacione">
+          <Key>
+            <PropertyRef Name="id_tipo_habitacion" />
+          </Key>
+          <Property Name="id_tipo_habitacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__Habitacio__id_ti__4AB81AF0" FromRole="TipoHabitaciones" ToRole="Habitaciones" />
         </EntityType>
         <EntityType Name="Urgencia">
           <Key>
@@ -680,8 +748,8 @@
           <Property Name="id_evento" Type="Int32" Nullable="false" />
           <Property Name="estado_urgencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="id_hospitalizacion" Type="Int32" />
-          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Urgencias__id_ev__4F7CD00D" FromRole="Urgencias" ToRole="EventosMedicos" />
-          <NavigationProperty Name="Hospitalizacione" Relationship="Self.FK__Urgencias__id_ho__5070F446" FromRole="Urgencias" ToRole="Hospitalizaciones" />
+          <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Urgencias__id_ev__5165187F" FromRole="Urgencias" ToRole="EventosMedicos" />
+          <NavigationProperty Name="Hospitalizacione" Relationship="Self.FK__Urgencias__id_ho__52593CB8" FromRole="Urgencias" ToRole="Hospitalizaciones" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -689,13 +757,13 @@
           </Key>
           <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_persona" Type="Int64" Nullable="false" />
-          <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="pass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Medicos" Relationship="Self.FK__Medicos__id_usua__403A8C7D" FromRole="Usuarios" ToRole="Medicos" />
-          <NavigationProperty Name="Persona" Relationship="Self.FK__Usuarios__id_per__3D5E1FD2" FromRole="Usuarios" ToRole="Personas" />
+          <NavigationProperty Name="Medicos" Relationship="Self.FK__Medicos__id_usua__4222D4EF" FromRole="Usuarios" ToRole="Medicos" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Usuarios__id_per__3F466844" FromRole="Usuarios" ToRole="Personas" />
         </EntityType>
-        <Association Name="FK__Altas__id_hospit__534D60F1">
+        <Association Name="FK__Altas__id_hospit__5535A963">
           <End Role="Hospitalizaciones" Type="Self.Hospitalizacione" Multiplicity="1" />
           <End Role="Altas" Type="Self.Alta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -707,7 +775,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Altas__id_medico__5441852A">
+        <Association Name="FK__Altas__id_medico__5629CD9C">
           <End Role="Medicos" Type="Self.Medico" Multiplicity="1" />
           <End Role="Altas" Type="Self.Alta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -719,7 +787,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Citas__id_evento__46E78A0C">
+        <Association Name="FK__Citas__id_evento__6A30C649">
           <End Role="EventosMedicos" Type="Self.EventosMedico" Multiplicity="1" />
           <End Role="Citas" Type="Self.Cita" Multiplicity="*" />
           <ReferentialConstraint>
@@ -731,7 +799,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetallesF__id_fo__619B8048">
+        <Association Name="FK__DetallesF__id_fo__6383C8BA">
           <End Role="Formulas" Type="Self.Formula" Multiplicity="1" />
           <End Role="DetallesFormulas" Type="Self.DetallesFormula" Multiplicity="*" />
           <ReferentialConstraint>
@@ -743,7 +811,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetallesF__id_me__628FA481">
+        <Association Name="FK__DetallesF__id_me__6477ECF3">
           <End Role="Medicamentos" Type="Self.Medicamento" Multiplicity="1" />
           <End Role="DetallesFormulas" Type="Self.DetallesFormula" Multiplicity="*" />
           <ReferentialConstraint>
@@ -755,7 +823,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EventosMe__id_me__440B1D61">
+        <Association Name="FK__EventosMe__id_me__45F365D3">
           <End Role="Medicos" Type="Self.Medico" Multiplicity="1" />
           <End Role="EventosMedicos" Type="Self.EventosMedico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -767,7 +835,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EventosMe__id_pa__4316F928">
+        <Association Name="FK__EventosMe__id_pa__44FF419A">
           <End Role="Pacientes" Type="Self.Paciente" Multiplicity="1" />
           <End Role="EventosMedicos" Type="Self.EventosMedico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -779,7 +847,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturaci__id_ev__5812160E">
+        <Association Name="FK__Facturaci__id_ev__59FA5E80">
           <End Role="EventosMedicos" Type="Self.EventosMedico" Multiplicity="1" />
           <End Role="Facturaciones" Type="Self.Facturacione" Multiplicity="*" />
           <ReferentialConstraint>
@@ -791,7 +859,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Formulas__id_eve__5CD6CB2B">
+        <Association Name="FK__Formulas__id_eve__5EBF139D">
           <End Role="EventosMedicos" Type="Self.EventosMedico" Multiplicity="1" />
           <End Role="Formulas" Type="Self.Formula" Multiplicity="*" />
           <ReferentialConstraint>
@@ -803,7 +871,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hospitali__id_ev__4BAC3F29">
+        <Association Name="FK__Hospitali__id_ev__4D94879B">
           <End Role="EventosMedicos" Type="Self.EventosMedico" Multiplicity="1" />
           <End Role="Hospitalizaciones" Type="Self.Hospitalizacione" Multiplicity="*" />
           <ReferentialConstraint>
@@ -815,7 +883,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Urgencias__id_ev__4F7CD00D">
+        <Association Name="FK__Urgencias__id_ev__5165187F">
           <End Role="EventosMedicos" Type="Self.EventosMedico" Multiplicity="1" />
           <End Role="Urgencias" Type="Self.Urgencia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -827,7 +895,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturaci__id_pa__571DF1D5">
+        <Association Name="FK__Facturaci__id_pa__59063A47">
           <End Role="Pacientes" Type="Self.Paciente" Multiplicity="1" />
           <End Role="Facturaciones" Type="Self.Facturacione" Multiplicity="*" />
           <ReferentialConstraint>
@@ -839,7 +907,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pagos__id_factur__656C112C">
+        <Association Name="FK__Pagos__id_factur__6754599E">
           <End Role="Facturaciones" Type="Self.Facturacione" Multiplicity="1" />
           <End Role="Pagos" Type="Self.Pago" Multiplicity="*" />
           <ReferentialConstraint>
@@ -851,7 +919,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Formulas__id_med__5BE2A6F2">
+        <Association Name="FK__Formulas__id_med__5DCAEF64">
           <End Role="Medicos" Type="Self.Medico" Multiplicity="1" />
           <End Role="Formulas" Type="Self.Formula" Multiplicity="*" />
           <ReferentialConstraint>
@@ -863,7 +931,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Formulas__id_pac__5AEE82B9">
+        <Association Name="FK__Formulas__id_pac__5CD6CB2B">
           <End Role="Pacientes" Type="Self.Paciente" Multiplicity="1" />
           <End Role="Formulas" Type="Self.Formula" Multiplicity="*" />
           <ReferentialConstraint>
@@ -875,7 +943,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hospitali__habit__4CA06362">
+        <Association Name="FK__Habitacio__id_ti__4AB81AF0">
+          <End Role="TipoHabitaciones" Type="Self.TipoHabitacione" Multiplicity="1" />
+          <End Role="Habitaciones" Type="Self.Habitacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoHabitaciones">
+              <PropertyRef Name="id_tipo_habitacion" />
+            </Principal>
+            <Dependent Role="Habitaciones">
+              <PropertyRef Name="id_tipo_habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hospitali__habit__4E88ABD4">
           <End Role="Habitaciones" Type="Self.Habitacione" Multiplicity="1" />
           <End Role="Hospitalizaciones" Type="Self.Hospitalizacione" Multiplicity="*" />
           <ReferentialConstraint>
@@ -887,7 +967,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Urgencias__id_ho__5070F446">
+        <Association Name="FK__Urgencias__id_ho__52593CB8">
           <End Role="Hospitalizaciones" Type="Self.Hospitalizacione" Multiplicity="0..1" />
           <End Role="Urgencias" Type="Self.Urgencia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -899,7 +979,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medicos__id_usua__403A8C7D">
+        <Association Name="FK__Medicos__id_usua__4222D4EF">
           <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Medicos" Type="Self.Medico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -911,7 +991,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pacientes__id_pe__398D8EEE">
+        <Association Name="FK__Pacientes__id_pe__3C69FB99">
           <End Role="Personas" Type="Self.Persona" Multiplicity="1" />
           <End Role="Pacientes" Type="Self.Paciente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -923,7 +1003,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuarios__id_per__3D5E1FD2">
+        <Association Name="FK__Personas__id_pai__398D8EEE">
+          <End Role="Paises" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Personas" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__id_per__3F466844">
           <End Role="Personas" Type="Self.Persona" Multiplicity="1" />
           <End Role="Usuarios" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -948,86 +1040,96 @@
           <EntitySet Name="Medicos" EntityType="Self.Medico" />
           <EntitySet Name="Pacientes" EntityType="Self.Paciente" />
           <EntitySet Name="Pagos" EntityType="Self.Pago" />
+          <EntitySet Name="Paises" EntityType="Self.Pais" />
           <EntitySet Name="Personas" EntityType="Self.Persona" />
+          <EntitySet Name="TipoHabitaciones" EntityType="Self.TipoHabitacione" />
           <EntitySet Name="Urgencias" EntityType="Self.Urgencia" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
-          <AssociationSet Name="FK__Altas__id_hospit__534D60F1" Association="Self.FK__Altas__id_hospit__534D60F1">
+          <AssociationSet Name="FK__Altas__id_hospit__5535A963" Association="Self.FK__Altas__id_hospit__5535A963">
             <End Role="Hospitalizaciones" EntitySet="Hospitalizaciones" />
             <End Role="Altas" EntitySet="Altas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Altas__id_medico__5441852A" Association="Self.FK__Altas__id_medico__5441852A">
+          <AssociationSet Name="FK__Altas__id_medico__5629CD9C" Association="Self.FK__Altas__id_medico__5629CD9C">
             <End Role="Medicos" EntitySet="Medicos" />
             <End Role="Altas" EntitySet="Altas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Citas__id_evento__46E78A0C" Association="Self.FK__Citas__id_evento__46E78A0C">
+          <AssociationSet Name="FK__Citas__id_evento__6A30C649" Association="Self.FK__Citas__id_evento__6A30C649">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Citas" EntitySet="Citas" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetallesF__id_fo__619B8048" Association="Self.FK__DetallesF__id_fo__619B8048">
+          <AssociationSet Name="FK__DetallesF__id_fo__6383C8BA" Association="Self.FK__DetallesF__id_fo__6383C8BA">
             <End Role="Formulas" EntitySet="Formulas" />
             <End Role="DetallesFormulas" EntitySet="DetallesFormulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetallesF__id_me__628FA481" Association="Self.FK__DetallesF__id_me__628FA481">
+          <AssociationSet Name="FK__DetallesF__id_me__6477ECF3" Association="Self.FK__DetallesF__id_me__6477ECF3">
             <End Role="Medicamentos" EntitySet="Medicamentos" />
             <End Role="DetallesFormulas" EntitySet="DetallesFormulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__EventosMe__id_me__440B1D61" Association="Self.FK__EventosMe__id_me__440B1D61">
+          <AssociationSet Name="FK__EventosMe__id_me__45F365D3" Association="Self.FK__EventosMe__id_me__45F365D3">
             <End Role="Medicos" EntitySet="Medicos" />
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
           </AssociationSet>
-          <AssociationSet Name="FK__EventosMe__id_pa__4316F928" Association="Self.FK__EventosMe__id_pa__4316F928">
+          <AssociationSet Name="FK__EventosMe__id_pa__44FF419A" Association="Self.FK__EventosMe__id_pa__44FF419A">
             <End Role="Pacientes" EntitySet="Pacientes" />
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturaci__id_ev__5812160E" Association="Self.FK__Facturaci__id_ev__5812160E">
+          <AssociationSet Name="FK__Facturaci__id_ev__59FA5E80" Association="Self.FK__Facturaci__id_ev__59FA5E80">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Facturaciones" EntitySet="Facturaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Formulas__id_eve__5CD6CB2B" Association="Self.FK__Formulas__id_eve__5CD6CB2B">
+          <AssociationSet Name="FK__Formulas__id_eve__5EBF139D" Association="Self.FK__Formulas__id_eve__5EBF139D">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Formulas" EntitySet="Formulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hospitali__id_ev__4BAC3F29" Association="Self.FK__Hospitali__id_ev__4BAC3F29">
+          <AssociationSet Name="FK__Hospitali__id_ev__4D94879B" Association="Self.FK__Hospitali__id_ev__4D94879B">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Hospitalizaciones" EntitySet="Hospitalizaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Urgencias__id_ev__4F7CD00D" Association="Self.FK__Urgencias__id_ev__4F7CD00D">
+          <AssociationSet Name="FK__Urgencias__id_ev__5165187F" Association="Self.FK__Urgencias__id_ev__5165187F">
             <End Role="EventosMedicos" EntitySet="EventosMedicos" />
             <End Role="Urgencias" EntitySet="Urgencias" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturaci__id_pa__571DF1D5" Association="Self.FK__Facturaci__id_pa__571DF1D5">
+          <AssociationSet Name="FK__Facturaci__id_pa__59063A47" Association="Self.FK__Facturaci__id_pa__59063A47">
             <End Role="Pacientes" EntitySet="Pacientes" />
             <End Role="Facturaciones" EntitySet="Facturaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pagos__id_factur__656C112C" Association="Self.FK__Pagos__id_factur__656C112C">
+          <AssociationSet Name="FK__Pagos__id_factur__6754599E" Association="Self.FK__Pagos__id_factur__6754599E">
             <End Role="Facturaciones" EntitySet="Facturaciones" />
             <End Role="Pagos" EntitySet="Pagos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Formulas__id_med__5BE2A6F2" Association="Self.FK__Formulas__id_med__5BE2A6F2">
+          <AssociationSet Name="FK__Formulas__id_med__5DCAEF64" Association="Self.FK__Formulas__id_med__5DCAEF64">
             <End Role="Medicos" EntitySet="Medicos" />
             <End Role="Formulas" EntitySet="Formulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Formulas__id_pac__5AEE82B9" Association="Self.FK__Formulas__id_pac__5AEE82B9">
+          <AssociationSet Name="FK__Formulas__id_pac__5CD6CB2B" Association="Self.FK__Formulas__id_pac__5CD6CB2B">
             <End Role="Pacientes" EntitySet="Pacientes" />
             <End Role="Formulas" EntitySet="Formulas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hospitali__habit__4CA06362" Association="Self.FK__Hospitali__habit__4CA06362">
+          <AssociationSet Name="FK__Habitacio__id_ti__4AB81AF0" Association="Self.FK__Habitacio__id_ti__4AB81AF0">
+            <End Role="TipoHabitaciones" EntitySet="TipoHabitaciones" />
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hospitali__habit__4E88ABD4" Association="Self.FK__Hospitali__habit__4E88ABD4">
             <End Role="Habitaciones" EntitySet="Habitaciones" />
             <End Role="Hospitalizaciones" EntitySet="Hospitalizaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Urgencias__id_ho__5070F446" Association="Self.FK__Urgencias__id_ho__5070F446">
+          <AssociationSet Name="FK__Urgencias__id_ho__52593CB8" Association="Self.FK__Urgencias__id_ho__52593CB8">
             <End Role="Hospitalizaciones" EntitySet="Hospitalizaciones" />
             <End Role="Urgencias" EntitySet="Urgencias" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medicos__id_usua__403A8C7D" Association="Self.FK__Medicos__id_usua__403A8C7D">
+          <AssociationSet Name="FK__Medicos__id_usua__4222D4EF" Association="Self.FK__Medicos__id_usua__4222D4EF">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Medicos" EntitySet="Medicos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pacientes__id_pe__398D8EEE" Association="Self.FK__Pacientes__id_pe__398D8EEE">
+          <AssociationSet Name="FK__Pacientes__id_pe__3C69FB99" Association="Self.FK__Pacientes__id_pe__3C69FB99">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Pacientes" EntitySet="Pacientes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuarios__id_per__3D5E1FD2" Association="Self.FK__Usuarios__id_per__3D5E1FD2">
+          <AssociationSet Name="FK__Personas__id_pai__398D8EEE" Association="Self.FK__Personas__id_pai__398D8EEE">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__id_per__3F466844" Association="Self.FK__Usuarios__id_per__3F466844">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
@@ -1114,7 +1216,7 @@
               <MappingFragment StoreEntitySet="Habitaciones">
                 <ScalarProperty Name="id_habitacion" ColumnName="id_habitacion" />
                 <ScalarProperty Name="numero_habitacion" ColumnName="numero_habitacion" />
-                <ScalarProperty Name="tipo_habitacion" ColumnName="tipo_habitacion" />
+                <ScalarProperty Name="id_tipo_habitacion" ColumnName="id_tipo_habitacion" />
                 <ScalarProperty Name="estado_habitacion" ColumnName="estado_habitacion" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
               </MappingFragment>
@@ -1172,6 +1274,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Paises">
+            <EntityTypeMapping TypeName="hospital_dbModel.Pais">
+              <MappingFragment StoreEntitySet="Paises">
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Personas">
             <EntityTypeMapping TypeName="hospital_dbModel.Persona">
               <MappingFragment StoreEntitySet="Personas">
@@ -1183,6 +1293,15 @@
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoHabitaciones">
+            <EntityTypeMapping TypeName="hospital_dbModel.TipoHabitacione">
+              <MappingFragment StoreEntitySet="TipoHabitaciones">
+                <ScalarProperty Name="id_tipo_habitacion" ColumnName="id_tipo_habitacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

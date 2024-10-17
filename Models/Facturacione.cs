@@ -29,14 +29,13 @@ namespace HospitalServices.Models
         public Nullable<System.DateTime> fecha_emision { get; set; }
         public string estado_pago { get; set; }
 
+
         [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }
 
         [JsonIgnore]
         public virtual Paciente Paciente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-
         public virtual ICollection<Pago> Pagos { get; set; }
     }
 }

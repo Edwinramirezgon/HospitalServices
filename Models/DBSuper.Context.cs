@@ -37,7 +37,9 @@ namespace HospitalServices.Models
         public virtual DbSet<Medico> Medicos { get; set; }
         public virtual DbSet<Paciente> Pacientes { get; set; }
         public virtual DbSet<Pago> Pagos { get; set; }
+        public virtual DbSet<Pais> Paises { get; set; }
         public virtual DbSet<Persona> Personas { get; set; }
+        public virtual DbSet<TipoHabitacione> TipoHabitaciones { get; set; }
         public virtual DbSet<Urgencia> Urgencias { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
     }

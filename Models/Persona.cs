@@ -30,14 +30,14 @@ namespace HospitalServices.Models
         public string telefono { get; set; }
         public string email { get; set; }
         public string genero { get; set; }
+        public int id_pais { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
- 
         public virtual ICollection<Paciente> Pacientes { get; set; }
+
+        [JsonIgnore]
+        public virtual Pais Pais { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-
         public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

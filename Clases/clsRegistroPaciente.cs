@@ -98,10 +98,13 @@ namespace HospitalServices.Clases
             return from pa in dbSuper.Set<Paciente>()
                    join pe in dbSuper.Set<Persona>()
                    on pa.id_persona equals pe.id_persona
+                   join pai in dbSuper.Set<Pais>()
+                   on pe.id_pais equals pai.id_pais
                    orderby pe.nombre
                    select new
                    {
                        ID = pe.id_persona,
+                       PAIS = pai.nombre,
                        NOMBRES = pe.nombre,
                        APELLIDOS = pe.apellido,
                        FECHA_DE_NACIMIENTO = pe.fecha_nacimiento,

@@ -267,7 +267,13 @@
     <Compile Include="Models\Pago.cs">
       <DependentUpon>DBSuper.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Pais.cs">
+      <DependentUpon>DBSuper.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Persona.cs">
+      <DependentUpon>DBSuper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoHabitacione.cs">
       <DependentUpon>DBSuper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Urgencia.cs">

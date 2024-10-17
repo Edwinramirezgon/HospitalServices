@@ -12,19 +12,18 @@ namespace HospitalServices.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Medicamento
+    public partial class TipoHabitacione
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Medicamento()
+        public TipoHabitacione()
         {
-            this.DetallesFormulas = new HashSet<DetallesFormula>();
+            this.Habitaciones = new HashSet<Habitacione>();
         }
     
-        public int id_medicamento { get; set; }
+        public int id_tipo_habitacion { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetallesFormula> DetallesFormulas { get; set; }
+        public virtual ICollection<Habitacione> Habitaciones { get; set; }
     }
 }

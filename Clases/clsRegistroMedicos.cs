@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -12,29 +13,47 @@ namespace HospitalServices.Clases
         hospital_dbEntities dbSuper = new hospital_dbEntities();
         public Persona persona { get; set; }
 
-        //Faltan estos dos
-       /* public string Insertar(int idpersona, string contacto, string alergias, string antecedentes)
+       
+        public string Insertar(int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto)
         {
             try
             {
 
                 dbSuper.Personas.Add(persona);
                 dbSuper.SaveChanges();
-                Paciente paciente = new Paciente();
-                paciente.id_persona = idpersona;
-                paciente.contacto_emergencia = contacto;
-                paciente.alergias = alergias;
-                paciente.antecedentes_medicos = antecedentes;
-                dbSuper.Pacientes.Add(paciente);
+                Usuario user = new Usuario();
+                user.id_persona = id_persona;
+                user.usuario1 = usuario1;
+                user.rol = rol;          
+                dbSuper.Usuarios.Add(user);
                 dbSuper.SaveChanges();
-                return "Se grabó el medico " + persona.nombre + " " + persona.apellido + " Con id " + idpersona;
+                Medico medico = new Medico();           
+                medico.id_usuario = user.id_usuario;
+                medico.especialidad = especialidad;
+                medico.horario = horario;
+                medico.telefono_contacto = contacto;
+                dbSuper.Medicos.Add(medico);
+                dbSuper.SaveChanges();
+                return "Se grabó el medico " + persona.nombre + " " + persona.apellido + " Con id " + id_persona;
+            }
+            catch (DbEntityValidationException e)
+            {
+                // Captura los errores de validación y construye un mensaje detallado
+                var errorMessages = e.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.PropertyName + ": " + x.ErrorMessage);
+
+                var fullErrorMessage = string.Join("; ", errorMessages);
+                var exceptionMessage = string.Concat(e.Message, " Los errores de validación son: ", fullErrorMessage);
+
+                return exceptionMessage; // Retorna los detalles de validación fallidos
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return "Error general al actualizar los datos: " + ex.Message;
             }
         }
-        public string Actualizar(int idpersona, string contacto, string alergias, string antecedentes)
+        public string Actualizar(int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto)
         {
 
             try
@@ -42,17 +61,24 @@ namespace HospitalServices.Clases
                 Persona _persona = Consultar(persona.id_persona);
                 Usuario _usuario = Consultar2(persona.id_persona);
                 Medico _medico = Consultar3(_usuario.id_usuario);
-                if (_persona != null && _usuario != null && _medico == null)
+                if (_persona != null && _usuario != null && _medico != null)
                 {
                     dbSuper.Personas.AddOrUpdate(persona);
+                    dbSuper.SaveChanges();                    
+                    Usuario user = new Usuario();
+                    user.id_usuario = _usuario.id_usuario;
+                    user.id_persona = id_persona;
+                    user.usuario1 = usuario1;
+                    user.rol = rol;           
+                    dbSuper.Usuarios.AddOrUpdate(user);
                     dbSuper.SaveChanges();
-                    Usuario usuario = new Usuario();
-                    usuario.id_persona = _usuario.id_persona;
-                    paciente.id_persona = idpersona;
-                    paciente.contacto_emergencia = contacto;
-                    paciente.alergias = alergias;
-                    paciente.antecedentes_medicos = antecedentes;
-                    dbSuper.Pacientes.AddOrUpdate(paciente);
+                    Medico medico = new Medico();
+                    medico.id_medico = _medico.id_medico;
+                    medico.id_usuario = _medico.id_usuario;
+                    medico.especialidad = especialidad;
+                    medico.horario = horario;
+                    medico.telefono_contacto = contacto;
+                    dbSuper.Medicos.AddOrUpdate(medico);
                     dbSuper.SaveChanges();
                     return "Se actualizaron los datos de el medico " + persona.nombre + " " + persona.apellido + " Con id " + persona.id_persona;
                 }
@@ -61,13 +87,14 @@ namespace HospitalServices.Clases
                     return "El medico que se quiere actualizar, no existe en la base de datos";
                 }
             }
+            
             catch (Exception ex)
             {
                 return ex.Message;
             }
-        }*/
+}
 
-        public string Eliminar()
+public string Eliminar()
         {
             Persona _persona = Consultar(persona.id_persona);
             Usuario _usuario = Consultar2(persona.id_persona);
@@ -109,10 +136,13 @@ namespace HospitalServices.Clases
                    on us.id_persona equals pe.id_persona
                    join me in dbSuper.Set<Medico>()
                    on us.id_usuario equals me.id_usuario
+                   join pai in dbSuper.Set<Pais>()
+                   on pe.id_pais equals pai.id_pais
                    orderby pe.nombre
                    select new
                    {
                        ID = pe.id_persona,
+                       PAIS=pai.nombre,
                        NOMBRES = pe.nombre,
                        APELLIDOS = pe.apellido,
                        FECHA_DE_NACIMIENTO = pe.fecha_nacimiento,

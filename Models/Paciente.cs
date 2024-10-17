@@ -30,16 +30,10 @@ namespace HospitalServices.Models
         public string antecedentes_medicos { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    
         public virtual ICollection<EventosMedico> EventosMedicos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-
         public virtual ICollection<Facturacione> Facturaciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-
         public virtual ICollection<Formula> Formulas { get; set; }
 
         [JsonIgnore]

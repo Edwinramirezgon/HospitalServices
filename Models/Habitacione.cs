@@ -23,12 +23,14 @@ namespace HospitalServices.Models
     
         public int id_habitacion { get; set; }
         public int numero_habitacion { get; set; }
-        public string tipo_habitacion { get; set; }
+        public int id_tipo_habitacion { get; set; }
         public string estado_habitacion { get; set; }
         public string descripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
+
+        [JsonIgnore]
+        public virtual TipoHabitacione TipoHabitacione { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hospitalizacione> Hospitalizaciones { get; set; }
     }
 }

@@ -15,28 +15,28 @@ namespace HospitalServices.Controllers
     public class RegistroMedicosController : ApiController
     {
 
-        //faltan estos dos
-       /* [HttpPost]
+
+        [HttpPost]
         [Route("Insertar")]
-        public string Insertar([FromBody] Persona persona, int idpersona, string contacto, string alergias, string antecedentes)
+        public string Insertar([FromBody] Persona persona, int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto)
         {
 
-            clsRegistroPaciente _persona = new clsRegistroPaciente();
+            clsRegistroMedicos _persona = new clsRegistroMedicos();
             _persona.persona = persona;
-            return _persona.Insertar(idpersona, contacto, alergias, antecedentes);
+            return _persona.Insertar(id_persona, usuario1, rol, especialidad, horario, contacto);
         }
 
 
 
         [HttpPut]
         [Route("Actualizar")]
-        public string Actualizar([FromBody] Persona persona, int idpersona, string contacto, string alergias, string antecedentes)
+        public string Actualizar([FromBody] Persona persona, int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto)
         {
 
-            clsRegistroPaciente _persona = new clsRegistroPaciente();
+            clsRegistroMedicos _persona = new clsRegistroMedicos();
             _persona.persona = persona;
-            return _persona.Actualizar(idpersona, contacto, alergias, antecedentes);
-        }*/
+            return _persona.Actualizar(id_persona, usuario1, rol, especialidad, horario, contacto);
+        }
 
 
         [HttpDelete]

@@ -22,6 +22,7 @@ namespace HospitalServices.Models
         public string descripcion_alta { get; set; }
         public string recomendaciones { get; set; }
 
+
         [JsonIgnore]
         public virtual Hospitalizacione Hospitalizacione { get; set; }
 
