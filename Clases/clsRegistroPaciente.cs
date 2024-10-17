@@ -70,7 +70,7 @@ namespace HospitalServices.Clases
         {
             Persona _persona = Consultar(persona.id_persona);
             Paciente _paciente = Consultar2(persona.id_persona); 
-            if (_persona == null || _paciente == null)
+            if (_persona == null && _paciente == null)
             {
                 return "El paciente no existe en la base de datos";
             }

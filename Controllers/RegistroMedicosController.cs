@@ -14,7 +14,9 @@ namespace HospitalServices.Controllers
     [RoutePrefix("api/RegistroMedicos")]
     public class RegistroMedicosController : ApiController
     {
-        [HttpPost]
+
+        //faltan estos dos
+       /* [HttpPost]
         [Route("Insertar")]
         public string Insertar([FromBody] Persona persona, int idpersona, string contacto, string alergias, string antecedentes)
         {
@@ -34,7 +36,9 @@ namespace HospitalServices.Controllers
             clsRegistroPaciente _persona = new clsRegistroPaciente();
             _persona.persona = persona;
             return _persona.Actualizar(idpersona, contacto, alergias, antecedentes);
-        }
+        }*/
+
+
         [HttpDelete]
         [Route("Eliminar")]
         public string Eliminar([FromBody] Persona persona)

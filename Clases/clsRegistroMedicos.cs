@@ -12,8 +12,8 @@ namespace HospitalServices.Clases
         hospital_dbEntities dbSuper = new hospital_dbEntities();
         public Persona persona { get; set; }
 
-
-        public string Insertar(int idpersona, string contacto, string alergias, string antecedentes)
+        //Faltan estos dos
+       /* public string Insertar(int idpersona, string contacto, string alergias, string antecedentes)
         {
             try
             {
@@ -41,18 +41,19 @@ namespace HospitalServices.Clases
             {
                 Persona _persona = Consultar(persona.id_persona);
                 Usuario _usuario = Consultar2(persona.id_persona);
-                if (_persona != null && _usuario != null)
+                Medico _medico = Consultar3(_usuario.id_usuario);
+                if (_persona != null && _usuario != null && _medico == null)
                 {
                     dbSuper.Personas.AddOrUpdate(persona);
                     dbSuper.SaveChanges();
                     Usuario usuario = new Usuario();
                     usuario.id_persona = _usuario.id_persona;
-                   /* paciente.id_persona = idpersona;
+                    paciente.id_persona = idpersona;
                     paciente.contacto_emergencia = contacto;
                     paciente.alergias = alergias;
                     paciente.antecedentes_medicos = antecedentes;
                     dbSuper.Pacientes.AddOrUpdate(paciente);
-                    dbSuper.SaveChanges();*/
+                    dbSuper.SaveChanges();
                     return "Se actualizaron los datos de el medico " + persona.nombre + " " + persona.apellido + " Con id " + persona.id_persona;
                 }
                 else
@@ -64,15 +65,19 @@ namespace HospitalServices.Clases
             {
                 return ex.Message;
             }
-        }
+        }*/
+
         public string Eliminar()
         {
             Persona _persona = Consultar(persona.id_persona);
             Usuario _usuario = Consultar2(persona.id_persona);
-            if (_persona == null || _usuario == null)
+            Medico _medico = Consultar3(_usuario.id_usuario);
+            if (_persona == null && _usuario == null && _medico == null)
             {
                 return "El medico no existe en la base de datos";
             }
+            dbSuper.Medicos.Remove(_medico);
+            dbSuper.SaveChanges();
             dbSuper.Usuarios.Remove(_usuario);
             dbSuper.SaveChanges();
             dbSuper.Personas.Remove(_persona);
@@ -89,6 +94,11 @@ namespace HospitalServices.Clases
         {
 
             return dbSuper.Usuarios.FirstOrDefault(c => c.id_persona == id);
+        }
+        public Medico Consultar3(int id)
+        {
+
+            return dbSuper.Medicos.FirstOrDefault(c => c.id_usuario == id);
         }
 
         public IQueryable LLenarTabla()
