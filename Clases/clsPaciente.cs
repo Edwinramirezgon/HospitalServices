@@ -68,29 +68,7 @@ namespace HospitalServices.Clases
             return dbSuper.Pacientes.FirstOrDefault(c => c.id_paciente == id);
         }
 
-        public IQueryable LLenarTabla()
-        {
-
-            return from pa in dbSuper.Set<Paciente>()
-                   join pe in dbSuper.Set<Persona>()
-                   on pa.id_persona equals pe.id_persona
-                   orderby pe.nombre
-                   select new
-                   { 
-                       ID = pe.id_persona,
-                       NOMBRES = pe.nombre,
-                       APELLIDOS = pe.apellido,
-                       FECHA_DE_NACIMIENTO = pe.fecha_nacimiento,
-                       DIRECCION = pe.direccion,
-                       TELEFONO = pe.telefono,
-                       EMAIL = pe.email,
-                       GENERO = pe.genero,
-                       CONTACTO_DE_EMERGENCIA = pa.contacto_emergencia,
-                       ALERGIAS = pa.alergias,
-                       ANTECEDENTES = pa.antecedentes_medicos
-                   
-                   };
+      
 
         }
     }
-}

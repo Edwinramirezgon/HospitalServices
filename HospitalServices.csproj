@@ -191,6 +191,7 @@
     <Compile Include="Clases\clsPaciente.cs" />
     <Compile Include="Clases\clsPago.cs" />
     <Compile Include="Clases\clsPersona.cs" />
+    <Compile Include="Clases\clsRegistroPaciente.cs" />
     <Compile Include="Clases\clsUrgencia.cs" />
     <Compile Include="Clases\clsUsuario.cs" />
     <Compile Include="Controllers\AltasController.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\PagosController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
+    <Compile Include="Controllers\RegistropacienteController.cs" />
     <Compile Include="Controllers\UrgenciasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">

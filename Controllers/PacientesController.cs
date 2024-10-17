@@ -50,12 +50,6 @@ namespace HospitalServices.Controllers
         }
 
 
-        [HttpGet]
-        [Route("LlenarTabla")]
-        public IQueryable LlenarTabla()
-        {
-            clsPaciente paciente = new clsPaciente();
-            return paciente.LLenarTabla();
-        }
+      
     }
 }
