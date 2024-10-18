@@ -41,7 +41,7 @@ namespace HospitalServices.Clases
                 Urgencia _urgencia = Consultar2(_evento.id_evento);
                 if (_evento != null && _urgencia != null)
                 {
-                    dbSuper.EventosMedicos.AddOrUpdate(_evento);
+                    dbSuper.EventosMedicos.AddOrUpdate(evento);
                     dbSuper.SaveChanges();
                     _urgencia.estado_urgencia = estado_urgencia;
                     dbSuper.Urgencias.AddOrUpdate(_urgencia);
