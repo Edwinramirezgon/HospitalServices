@@ -50,11 +50,19 @@ namespace HospitalServices.Controllers
         }
 
         [HttpGet]
-        [Route("LlenarCombo")]
-        public List<Habitacione> LlenarCombo()
+        [Route("LlenarTabla")]
+        public IQueryable LlenarTabla()
         {
-            clsHabitacione habitacion = new clsHabitacione();
-            return habitacion.LlenarCombo();
+            clsHabitacione _habitacion = new clsHabitacione();
+            return _habitacion.LLenarTabla();
+        }
+
+        [HttpGet]
+        [Route("LlenarCombo")]
+        public IQueryable LlenarCombo()
+        {
+            clsHabitacione _habitacion = new clsHabitacione();
+            return _habitacion.LlenarCombo();
         }
     }
 }

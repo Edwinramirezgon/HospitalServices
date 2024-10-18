@@ -43,7 +43,7 @@ namespace HospitalServices.Controllers
         [Route("Eliminar")]
         public string Eliminar([FromBody] Persona persona)
         {
-            clsRegistroPaciente _persona = new clsRegistroPaciente();
+            clsRegistroMedicos _persona = new clsRegistroMedicos();
             _persona.persona = persona;
             return _persona.Eliminar();
         }
@@ -52,7 +52,7 @@ namespace HospitalServices.Controllers
         public Persona ConsultarXID(long id)
         {
 
-            clsRegistroPaciente _persona = new clsRegistroPaciente();
+            clsRegistroMedicos _persona = new clsRegistroMedicos();
             return _persona.Consultar(id);
         }
 
@@ -73,5 +73,13 @@ namespace HospitalServices.Controllers
             return medicos.LLenarTabla();
         }
 
+        [HttpGet]
+        [Route("LlenarCombo")]
+        public IQueryable LlenarCombo()
+        {
+            clsRegistroMedicos medico = new clsRegistroMedicos();
+            return medico.LlenarCombo();
+        }
     }
+
 }

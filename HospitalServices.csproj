@@ -193,6 +193,7 @@
     <Compile Include="Clases\clsPersona.cs" />
     <Compile Include="Clases\clsRegistroMedicos.cs" />
     <Compile Include="Clases\clsRegistroPaciente.cs" />
+    <Compile Include="Clases\clsRegistroUrgencias.cs" />
     <Compile Include="Clases\clsUrgencia.cs" />
     <Compile Include="Clases\clsUsuario.cs" />
     <Compile Include="Controllers\AltasController.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\RegistroMedicosController.cs" />
     <Compile Include="Controllers\RegistropacienteController.cs" />
+    <Compile Include="Controllers\RegistroUrgenciasController.cs" />
     <Compile Include="Controllers\UrgenciasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">

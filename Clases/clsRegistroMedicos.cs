@@ -13,7 +13,7 @@ namespace HospitalServices.Clases
         hospital_dbEntities dbSuper = new hospital_dbEntities();
         public Persona persona { get; set; }
 
-       
+
         public string Insertar(int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto)
         {
             try
@@ -24,10 +24,10 @@ namespace HospitalServices.Clases
                 Usuario user = new Usuario();
                 user.id_persona = id_persona;
                 user.usuario1 = usuario1;
-                user.rol = rol;          
+                user.rol = rol;
                 dbSuper.Usuarios.Add(user);
                 dbSuper.SaveChanges();
-                Medico medico = new Medico();           
+                Medico medico = new Medico();
                 medico.id_usuario = user.id_usuario;
                 medico.especialidad = especialidad;
                 medico.horario = horario;
@@ -64,12 +64,12 @@ namespace HospitalServices.Clases
                 if (_persona != null && _usuario != null && _medico != null)
                 {
                     dbSuper.Personas.AddOrUpdate(persona);
-                    dbSuper.SaveChanges();                    
+                    dbSuper.SaveChanges();
                     Usuario user = new Usuario();
                     user.id_usuario = _usuario.id_usuario;
                     user.id_persona = id_persona;
                     user.usuario1 = usuario1;
-                    user.rol = rol;           
+                    user.rol = rol;
                     dbSuper.Usuarios.AddOrUpdate(user);
                     dbSuper.SaveChanges();
                     Medico medico = new Medico();
@@ -87,14 +87,14 @@ namespace HospitalServices.Clases
                     return "El medico que se quiere actualizar, no existe en la base de datos";
                 }
             }
-            
+
             catch (Exception ex)
             {
                 return ex.Message;
             }
-}
+        }
 
-public string Eliminar()
+        public string Eliminar()
         {
             Persona _persona = Consultar(persona.id_persona);
             Usuario _usuario = Consultar2(persona.id_persona);
@@ -142,7 +142,7 @@ public string Eliminar()
                    select new
                    {
                        ID = pe.id_persona,
-                       PAIS=pai.nombre,
+                       PAIS = pai.nombre,
                        NOMBRES = pe.nombre,
                        APELLIDOS = pe.apellido,
                        FECHA_DE_NACIMIENTO = pe.fecha_nacimiento,
@@ -154,11 +154,22 @@ public string Eliminar()
                        ROL = us.rol,
                        ESPECIALIDAD = me.especialidad,
                        HORARIO = me.horario,
-                      CONTACTO_DE_EMERGENCIA = me.telefono_contacto
+                       CONTACTO_DE_EMERGENCIA = me.telefono_contacto
 
                    };
 
 
+        }
+
+        public IQueryable LlenarCombo()
+        {
+            return dbSuper.Paises
+                .OrderBy(t => t.nombre)
+                .Select(t => new
+                {
+                    Codigo = t.id_pais,
+                    Nombre = t.nombre
+                });
         }
     }
 }

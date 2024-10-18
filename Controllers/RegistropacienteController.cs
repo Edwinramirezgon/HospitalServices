@@ -70,5 +70,13 @@ namespace HospitalServices.Controllers
             return paciente.LLenarTabla();
         }
 
+        [HttpGet]
+        [Route("LlenarCombo")]
+        public IQueryable LlenarCombo()
+        {
+            clsRegistroMedicos medico = new clsRegistroMedicos();
+            return medico.LlenarCombo();
+        }
+
     }
 }

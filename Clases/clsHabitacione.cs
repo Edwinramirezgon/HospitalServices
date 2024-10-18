@@ -37,8 +37,8 @@ namespace HospitalServices.Clases
                 if (_habitacion != null)
                 {
                     dbSuper.Habitaciones.AddOrUpdate(habitacion);
-                dbSuper.SaveChanges();
-                return "Se actualizaron los datos de la habitacion con id: " + habitacion.id_habitacion;
+                    dbSuper.SaveChanges();
+                    return "Se actualizaron los datos de la habitacion con id: " + habitacion.id_habitacion;
                 }
                 else
                 {
@@ -68,11 +68,35 @@ namespace HospitalServices.Clases
             return dbSuper.Habitaciones.FirstOrDefault(c => c.id_habitacion == id);
         }
 
-        public List<Habitacione> LlenarCombo()
+        public IQueryable LLenarTabla()
         {
-            return dbSuper.Habitaciones                
-                .OrderBy(t => t.numero_habitacion)
-                .ToList();
+
+            return from ha in dbSuper.Set<Habitacione>()
+                   join th in dbSuper.Set<TipoHabitacione>()
+                   on ha.id_tipo_habitacion equals th.id_tipo_habitacion              
+                   orderby th.nombre
+                   select new
+                   {
+                       ID = ha.id_habitacion,
+                       NUMERO_HABITACION = ha.numero_habitacion,
+                       ESTADO = ha.estado_habitacion,
+                       DESCRIPCION = ha.descripcion,
+                       TIPO_DE_HABITACION = th.nombre
+
+                   };
+
+
+        }
+
+        public IQueryable LlenarCombo()
+        {
+            return dbSuper.TipoHabitaciones
+                .OrderBy(t => t.nombre)
+                .Select(t => new
+                {
+                    Codigo = t.id_tipo_habitacion,
+                    Nombre = t.nombre
+                });
         }
     }
 }

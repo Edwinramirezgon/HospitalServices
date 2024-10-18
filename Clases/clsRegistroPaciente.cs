@@ -120,5 +120,16 @@ namespace HospitalServices.Clases
 
 
         }
+
+        public IQueryable LlenarCombo()
+        {
+            return dbSuper.Paises
+                .OrderBy(t => t.nombre)
+                .Select(t => new
+                {
+                    Codigo = t.id_pais,
+                    Nombre = t.nombre
+                });
+        }
     }
 }
