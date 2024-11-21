@@ -12,6 +12,7 @@ namespace HospitalServices.Controllers
 {
     [EnableCors(origins: "https://localhost:44306", headers: "*", methods: "*")]
     [RoutePrefix("api/Altas")]
+    [Authorize]
 
     public class AltasController : ApiController
     {

@@ -22,8 +22,8 @@ namespace HospitalServices.Models
         public string motivo { get; set; }
         public string estado_cita { get; set; }
 
-        [JsonIgnore]
 
+        [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }
     }
 }

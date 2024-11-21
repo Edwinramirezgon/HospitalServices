@@ -46,7 +46,7 @@ namespace HospitalServices.Clases
                     _urgencia.estado_urgencia = estado_urgencia;
                     dbSuper.Urgencias.AddOrUpdate(_urgencia);
                     dbSuper.SaveChanges();
-                    return "Se actualizaron los datos de la urgencia con ";
+                    return "Se actualizaron los datos de la urgencia";
                 }
                 else
                 {

@@ -11,6 +11,8 @@ namespace HospitalServices.Controllers
 {
     [EnableCors(origins: "https://localhost:44306", headers: "*", methods: "*")]
     [RoutePrefix("api/RegistroUrgencias")]
+    [Authorize]
+
     public class RegistroUrgenciasController : ApiController
     {
 

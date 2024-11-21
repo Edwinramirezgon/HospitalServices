@@ -20,7 +20,9 @@ namespace HospitalServices.Models
         {
             this.Pagos = new HashSet<Pago>();
         }
-    
+
+
+   
         public int id_factura { get; set; }
         public int id_paciente { get; set; }
         public int id_evento { get; set; }
@@ -28,7 +30,6 @@ namespace HospitalServices.Models
         public string metodo_pago { get; set; }
         public Nullable<System.DateTime> fecha_emision { get; set; }
         public string estado_pago { get; set; }
-
 
         [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }

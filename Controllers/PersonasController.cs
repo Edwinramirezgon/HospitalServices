@@ -12,6 +12,8 @@ namespace HospitalServices.Controllers
 {
     [EnableCors(origins: "https://localhost:44306", headers: "*", methods: "*")]
     [RoutePrefix("api/Personas")]
+    [Authorize]
+
     public class PersonasController : ApiController
     {
         [HttpPost]

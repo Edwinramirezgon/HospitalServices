@@ -27,7 +27,6 @@ namespace HospitalServices.Models
         public string estado_habitacion { get; set; }
         public string descripcion { get; set; }
 
-
         [JsonIgnore]
         public virtual TipoHabitacione TipoHabitacione { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

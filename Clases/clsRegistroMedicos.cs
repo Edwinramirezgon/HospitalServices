@@ -14,14 +14,19 @@ namespace HospitalServices.Clases
         public Persona persona { get; set; }
 
 
-        public string Insertar(int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto)
+        public string Insertar(int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto, string password)
         {
             try
             {
-
-                dbSuper.Personas.Add(persona);
+                clsCypher cifrar = new clsCypher();
+                cifrar.Password = password;
+                if (cifrar.CifrarClave())
+                {
+                 dbSuper.Personas.Add(persona);
                 dbSuper.SaveChanges();
                 Usuario user = new Usuario();
+                user.Salt = cifrar.Salt;
+                user.Password = cifrar.PasswordCifrado;
                 user.id_persona = id_persona;
                 user.usuario1 = usuario1;
                 user.rol = rol;
@@ -32,9 +37,15 @@ namespace HospitalServices.Clases
                 medico.especialidad = especialidad;
                 medico.horario = horario;
                 medico.telefono_contacto = contacto;
+
                 dbSuper.Medicos.Add(medico);
                 dbSuper.SaveChanges();
                 return "Se grabó el medico " + persona.nombre + " " + persona.apellido + " Con id " + id_persona;
+                }
+                else
+                {
+                    return "No  se pudo cifrar la clave.";
+                }
             }
             catch (DbEntityValidationException e)
             {
@@ -53,7 +64,7 @@ namespace HospitalServices.Clases
                 return "Error general al actualizar los datos: " + ex.Message;
             }
         }
-        public string Actualizar(int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto)
+        public string Actualizar(int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto, string password)
         {
 
             try
@@ -63,12 +74,19 @@ namespace HospitalServices.Clases
                 Medico _medico = Consultar3(_usuario.id_usuario);
                 if (_persona != null && _usuario != null && _medico != null)
                 {
-                    dbSuper.Personas.AddOrUpdate(persona);
+
+                    clsCypher cifrar = new clsCypher();
+                    cifrar.Password = password;
+                    if (cifrar.CifrarClave())
+                    {
+                        dbSuper.Personas.AddOrUpdate(persona);
                     dbSuper.SaveChanges();
                     Usuario user = new Usuario();
                     user.id_usuario = _usuario.id_usuario;
                     user.id_persona = id_persona;
-                    user.usuario1 = usuario1;
+                        user.Salt = cifrar.Salt;
+                        user.Password = cifrar.PasswordCifrado;
+                        user.usuario1 = usuario1;
                     user.rol = rol;
                     dbSuper.Usuarios.AddOrUpdate(user);
                     dbSuper.SaveChanges();
@@ -81,6 +99,11 @@ namespace HospitalServices.Clases
                     dbSuper.Medicos.AddOrUpdate(medico);
                     dbSuper.SaveChanges();
                     return "Se actualizaron los datos de el medico " + persona.nombre + " " + persona.apellido + " Con id " + persona.id_persona;
+                    }
+                    else
+                    {
+                        return "No  se pudo cifrar la clave.";
+                    }
                 }
                 else
                 {

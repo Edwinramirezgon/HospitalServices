@@ -21,7 +21,6 @@ namespace HospitalServices.Models
         public Nullable<int> cantidad { get; set; }
         public string dosis { get; set; }
 
-
         [JsonIgnore]
         public virtual Formula Formula { get; set; }
 

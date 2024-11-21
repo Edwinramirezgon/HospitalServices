@@ -19,8 +19,6 @@ namespace HospitalServices.Models
         public int id_evento { get; set; }
         public string estado_urgencia { get; set; }
         public Nullable<int> id_hospitalizacion { get; set; }
-
-
         [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }
 

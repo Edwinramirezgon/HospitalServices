@@ -12,30 +12,32 @@ namespace HospitalServices.Controllers
 {
     [EnableCors(origins: "https://localhost:44306", headers: "*", methods: "*")]
     [RoutePrefix("api/RegistroMedicos")]
+    [Authorize]
+
     public class RegistroMedicosController : ApiController
     {
 
 
         [HttpPost]
         [Route("Insertar")]
-        public string Insertar([FromBody] Persona persona, int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto)
+        public string Insertar([FromBody] Persona persona, int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto, string password)
         {
 
             clsRegistroMedicos _persona = new clsRegistroMedicos();
             _persona.persona = persona;
-            return _persona.Insertar(id_persona, usuario1, rol, especialidad, horario, contacto);
+            return _persona.Insertar(id_persona, usuario1, rol, especialidad, horario, contacto, password);
         }
 
 
 
         [HttpPut]
         [Route("Actualizar")]
-        public string Actualizar([FromBody] Persona persona, int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto)
+        public string Actualizar([FromBody] Persona persona, int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto, string password)
         {
 
             clsRegistroMedicos _persona = new clsRegistroMedicos();
             _persona.persona = persona;
-            return _persona.Actualizar(id_persona, usuario1, rol, especialidad, horario, contacto);
+            return _persona.Actualizar(id_persona, usuario1, rol, especialidad, horario, contacto, password);
         }
 
 
