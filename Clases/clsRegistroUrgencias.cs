@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 
 namespace HospitalServices.Clases
 {
@@ -116,11 +117,22 @@ namespace HospitalServices.Clases
                    {
                        ID_URGENCIA = ur.id_urgencia,
                        PACIENTE = pe2.nombre +" "+ pe2.apellido,
-                       ID_PACIENTE = pe2.id_persona,
+                       ID_PACIENTE = pe2.id_persona,                     
                        MEDICO = pe.nombre +" " + pe.apellido,
                        FECHA_DE_URGENCIA = ev.fecha_evento,
                        DESCRIPCION_DE_URGENCIA = ev.descripcion,
-                       ESTADO_DE_URGENCIA = ur.estado_urgencia
+                       ESTADO_DE_URGENCIA = ur.estado_urgencia,
+
+                         EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"Editar('"
+        + ur.id_urgencia + "', '"
+        + ev.id_paciente + "', '"
+         + ev.id_medico + "', '"
+        + ev.fecha_evento + "', '"       
+        + ev.descripcion.Substring(0,50) + "', '"    
+        + ur.estado_urgencia + "')\">EDITAR</button>",
+
+                       ELIMINAR = "<button type=\"button\" id=\"btnEliminar\" class=\"btn-block btn-lg btn-danger\" onclick=\"Eliminar('"
+        + ur.id_urgencia + "')\">ELIMINAR</button>"
 
                    };
 

@@ -102,19 +102,39 @@ namespace HospitalServices.Clases
                    on pe.id_pais equals pai.id_pais
                    orderby pe.nombre
                    select new
+                   
                    {
                        ID = pe.id_persona,
                        PAIS = pai.nombre,
                        NOMBRES = pe.nombre,
                        APELLIDOS = pe.apellido,
-                       FECHA_DE_NACIMIENTO = pe.fecha_nacimiento,
+                       FECHA_DE_NACIMIENTO = pe.fecha_nacimiento.ToString().Substring(0, 10),
                        DIRECCION = pe.direccion,
                        TELEFONO = pe.telefono,
                        EMAIL = pe.email,
                        GENERO = pe.genero,
                        CONTACTO_DE_EMERGENCIA = pa.contacto_emergencia,
                        ALERGIAS = pa.alergias,
-                       ANTECEDENTES = pa.antecedentes_medicos
+                       ANTECEDENTES = pa.antecedentes_medicos,
+
+                       EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"Editar('"
+        + pe.id_persona + "', '"
+        + pai.id_pais + "', '"
+        + pe.nombre + "', '"
+        + pe.apellido + "', '"
+        + pe.fecha_nacimiento + "', '"
+        + pe.direccion + "', '"
+        + pe.telefono + "', '"
+        + pe.email + "', '"
+        + pe.genero + "', '"
+        + pa.contacto_emergencia + "', '"
+        + pa.alergias.Substring(0,50) + "', '"
+        + pa.antecedentes_medicos.Substring(0,50) + "')\">EDITAR</button>",
+
+                     
+
+                       ELIMINAR = "<button type=\"button\" id=\"btnEliminar\" class=\"btn-block btn-lg btn-danger\" onclick=\"Eliminar('"
+        + pe.id_persona + "')\">ELIMINAR</button>"
 
                    };
 
