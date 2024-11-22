@@ -66,9 +66,10 @@ namespace HospitalServices.Clases
             {
                 return "La urgencia no existe en la base de datos";
             }
+            dbSuper.Urgencias.Remove(_urgencia);
             dbSuper.EventosMedicos.Remove(_evento);
             dbSuper.SaveChanges();
-            dbSuper.Urgencias.Remove(_urgencia);
+          
             dbSuper.SaveChanges();
             return "Se eliminó la urgencia " ;
         }

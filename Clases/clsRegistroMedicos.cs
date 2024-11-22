@@ -177,7 +177,30 @@ namespace HospitalServices.Clases
                        ROL = us.rol,
                        ESPECIALIDAD = me.especialidad,
                        HORARIO = me.horario,
-                       CONTACTO_DE_EMERGENCIA = me.telefono_contacto
+                       CONTACTO_DE_EMERGENCIA = me.telefono_contacto,
+
+                       EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"Editar('"
+        + pe.id_persona + "', '"
+        + pai.id_pais + "', '"
+        + pe.nombre + "', '"
+        + pe.apellido + "', '"
+        + pe.fecha_nacimiento + "', '"
+        + pe.direccion + "', '"
+        + pe.telefono + "', '"
+        + pe.email + "', '"
+        + pe.genero + "', '"
+        + us.usuario1 + "', '"
+        + us.rol + "', '"
+        + me.especialidad + "', '"
+        + me.horario + "', '"
+        + me.telefono_contacto + "')\">EDITAR</button>",
+
+         ELIMINAR = "<button type=\"button\" id=\"btnEliminar\" class=\"btn-block btn-lg btn-danger\" onclick=\"Eliminar('"
+        + pe.id_persona + "')\">ELIMINAR</button>"
+
+                       
+
+
 
                    };
 
