@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 
@@ -119,16 +120,16 @@ namespace HospitalServices.Clases
                        PACIENTE = pe2.nombre +" "+ pe2.apellido,
                        ID_PACIENTE = pe2.id_persona,                     
                        MEDICO = pe.nombre +" " + pe.apellido,
-                       FECHA_DE_URGENCIA = ev.fecha_evento,
+                       FECHA_DE_URGENCIA = ev.fecha_evento.ToString().Substring(0, 10),
                        DESCRIPCION_DE_URGENCIA = ev.descripcion,
                        ESTADO_DE_URGENCIA = ur.estado_urgencia,
 
-                         EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"Editar('"
+                         EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"abrirModalEditar('"
         + ur.id_urgencia + "', '"
         + ev.id_paciente + "', '"
          + ev.id_medico + "', '"
         + ev.fecha_evento + "', '"       
-        + ev.descripcion.Substring(0,50) + "', '"    
+        + ev.descripcion.Substring(0,500) + "', '"    
         + ur.estado_urgencia + "')\">EDITAR</button>",
 
                        ELIMINAR = "<button type=\"button\" id=\"btnEliminar\" class=\"btn-block btn-lg btn-danger\" onclick=\"Eliminar('"
@@ -138,6 +139,8 @@ namespace HospitalServices.Clases
 
 
         }
+
+
 
         public IQueryable LlenarCombo()
         {

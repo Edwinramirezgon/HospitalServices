@@ -117,7 +117,7 @@ namespace HospitalServices.Clases
                        ALERGIAS = pa.alergias,
                        ANTECEDENTES = pa.antecedentes_medicos,
 
-                       EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"Editar('"
+                       EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"abrirModalEditar('"
         + pe.id_persona + "', '"
         + pai.id_pais + "', '"
         + pe.nombre + "', '"
@@ -128,8 +128,8 @@ namespace HospitalServices.Clases
         + pe.email + "', '"
         + pe.genero + "', '"
         + pa.contacto_emergencia + "', '"
-        + pa.alergias.Substring(0,50) + "', '"
-        + pa.antecedentes_medicos.Substring(0,50) + "')\">EDITAR</button>",
+        + pa.alergias.Substring(0,500) + "', '"
+        + pa.antecedentes_medicos.Substring(0,500) + "')\">EDITAR</button>",
 
                      
 

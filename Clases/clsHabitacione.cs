@@ -81,9 +81,20 @@ namespace HospitalServices.Clases
                        NUMERO_HABITACION = ha.numero_habitacion,
                        ESTADO = ha.estado_habitacion,
                        DESCRIPCION = ha.descripcion,
-                       TIPO_DE_HABITACION = th.nombre
+                       TIPO_DE_HABITACION = th.nombre,
+
+                       EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"abrirModalEditar('"
+        + ha.id_habitacion + "', '"
+        + ha.numero_habitacion + "', '"
+         + ha.estado_habitacion + "', '"
+        + ha.descripcion.Substring(0,500) + "', '"      
+        + th.id_tipo_habitacion + "')\">EDITAR</button>",
+
+                       ELIMINAR = "<button type=\"button\" id=\"btnEliminar\" class=\"btn-block btn-lg btn-danger\" onclick=\"Eliminar('"
+        + ha.id_habitacion + "')\">ELIMINAR</button>"
 
                    };
+                 
 
 
         }

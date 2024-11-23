@@ -180,7 +180,7 @@ namespace HospitalServices.Clases
                        HORARIO = me.horario,
                        CONTACTO_DE_EMERGENCIA = me.telefono_contacto,
 
-                       EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"Editar('"
+                       EDITAR = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-warning\" onclick=\"abrirModalEditar('"
         + pe.id_persona + "', '"
         + pai.id_pais + "', '"
         + pe.nombre + "', '"
