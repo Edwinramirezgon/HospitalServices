@@ -16,13 +16,30 @@ namespace HospitalServices.Controllers
     public class RegistroFormulasController : ApiController
     {
         [HttpPost]
-        [Route("GrabarFormula")]
-        public string GrabarFormula([FromBody] Formula formula)
+        [Route("Insertar")]
+        public string Insertar([FromBody] Formula formula)
         {
-            clsRegistroFormulas Formula = new clsRegistroFormulas();
-            Formula.formula = formula;
-            return Formula.GrabarFormula();
+
+            clsRegistroFormulas _formula = new clsRegistroFormulas();
+            _formula.formula = formula;
+            return _formula.Insertar();
         }
+
+
+        [HttpGet]
+        [Route("NFormula")]
+        public int GenerarNumeroFormula()
+        {
+
+            clsRegistroFormulas _alta = new clsRegistroFormulas();
+
+
+            int nuevoIdFormula = _alta.GenerarNumeroFormula();
+
+
+            return nuevoIdFormula;
+        }
+
         [HttpGet]
         [Route("LlenarCombo")]
         public IQueryable LlenarCombo()

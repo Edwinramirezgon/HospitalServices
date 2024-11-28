@@ -44,6 +44,8 @@ namespace HospitalServices.Controllers
             _alta.alta = alta;
             return _alta.Eliminar();
         }
+
+
         [HttpGet]
         [Route("ConsultarXID")]
         public Alta ConsultarXID(int id)

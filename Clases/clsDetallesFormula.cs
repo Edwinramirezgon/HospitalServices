@@ -21,7 +21,7 @@ namespace HospitalServices.Clases
 
                 dbSuper.DetallesFormulas.Add(detalle);
                 dbSuper.SaveChanges();
-                return "Se grabó el detalle de la formula";
+                return null;
             }
             catch (Exception ex)
             {

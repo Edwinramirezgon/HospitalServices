@@ -1,6 +1,7 @@
 ﻿using HospitalServices.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 
@@ -13,28 +14,23 @@ namespace HospitalServices.Clases
         public Formula formula { get; set; }
         public DetallesFormula detallesFormula { get; set; }
 
-        public string GrabarFormula()
-        {
-            if (formula.id_formula == 0) {
-                return GrabarEncabezado();
-            }
-            return GrabarDetalle();
-        }
-        public string GrabarEncabezado() 
+
+
+        public string Insertar()
         {
             try
             {
-                formula.id_formula = GenerarNumeroFormula();
-                formula.fecha_formula = DateTime.Now;
+
                 dbSuper.Formulas.Add(formula);
                 dbSuper.SaveChanges();
-                return formula.id_formula.ToString();
+                return "Se grabó la formula ";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
         }
+
         public int GenerarNumeroFormula()
         {
             return dbSuper.Formulas.Select(f => f.id_formula).DefaultIfEmpty(0).Max() + 1;
@@ -53,7 +49,7 @@ namespace HospitalServices.Clases
                 return ex.Message;
             }            
         }
-        
+
         public IQueryable LlenarCombo()
         {
             return dbSuper.Medicamentos
@@ -61,11 +57,12 @@ namespace HospitalServices.Clases
                 .Select(t => new
                 {
                     Codigo = t.id_medicamento,
-                    Nombre = t.nombre
+                    Nombre = t.nombre,
+                    Descripcion = t.descripcion
                 });
         }
 
-         public IQueryable LLenarTabla(string id)
+        public IQueryable LLenarTabla(string id)
         {
 
             long longId = Convert.ToInt64(id);
@@ -97,8 +94,10 @@ namespace HospitalServices.Clases
                        ASIGNAR_FORMULA = "<button type=\"button\" id=\"btnEditar\" class=\"btn-block btn-lg btn-success\" onclick=\"abrirModalAsignar('"
         + ev.id_evento + "', '"
         + pa.id_persona + "', '"
+        + pa.id_paciente + "', '"
         + pe2.nombre + "', '"
         + pe2.apellido + "', '"
+        + me.id_medico + "', '"
         + pe.nombre + "', '"
         + pe.apellido + "', '"      
         + ev.fecha_evento + "', '"    
