@@ -9,10 +9,10 @@
 
 namespace HospitalServices.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using Newtonsoft.Json;
+
     public partial class Hospitalizacione
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,6 +29,7 @@ namespace HospitalServices.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Alta> Altas { get; set; }
+
 
         [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }

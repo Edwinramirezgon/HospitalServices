@@ -9,10 +9,10 @@
 
 namespace HospitalServices.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using Newtonsoft.Json;
+
     public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,13 +23,16 @@ namespace HospitalServices.Models
     
         public int id_usuario { get; set; }
         public long id_persona { get; set; }
-        public string usuario1 { get; set; }
+        public string Tipo { get; set; }
+        public string Pagina { get; set; }
+        public string Mensaje { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
         public string rol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medico> Medicos { get; set; }
+
 
         [JsonIgnore]
         public virtual Persona Persona { get; set; }

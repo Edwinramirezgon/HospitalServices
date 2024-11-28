@@ -9,16 +9,18 @@
 
 namespace HospitalServices.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using Newtonsoft.Json;
+
     public partial class Urgencia
     {
         public int id_urgencia { get; set; }
         public int id_evento { get; set; }
         public string estado_urgencia { get; set; }
         public Nullable<int> id_hospitalizacion { get; set; }
+
+
         [JsonIgnore]
         public virtual EventosMedico EventosMedico { get; set; }
 

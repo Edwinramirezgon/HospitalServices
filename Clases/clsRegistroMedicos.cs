@@ -15,7 +15,7 @@ namespace HospitalServices.Clases
         public Persona persona { get; set; }
 
 
-        public string Insertar(int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto, string password)
+        public string Insertar(int id_persona, string Tipo, string rol, string Mensaje, string Pagina, string especialidad, string horario, string contacto, string password)
         {
             try
             {
@@ -29,8 +29,10 @@ namespace HospitalServices.Clases
                     user.Salt = cifrar.Salt;
                     user.Password = cifrar.PasswordCifrado;
                     user.id_persona = id_persona;
-                    user.usuario1 = usuario1;
+                    user.Tipo = Tipo;
                     user.rol = rol;
+                    user.Mensaje = Mensaje;
+                    user.Pagina = Pagina;
                     dbSuper.Usuarios.Add(user);
                     dbSuper.SaveChanges();
                     Medico medico = new Medico();
@@ -65,7 +67,7 @@ namespace HospitalServices.Clases
                 return "Error general al actualizar los datos: " + ex.Message;
             }
         }
-        public string Actualizar(int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto, string password)
+        public string Actualizar(int id_persona, string Tipo, string rol, string Mensaje, string Pagina, string especialidad, string horario, string contacto, string password)
         {
 
             try
@@ -84,11 +86,13 @@ namespace HospitalServices.Clases
                         dbSuper.SaveChanges();
                         Usuario user = new Usuario();
                         user.id_usuario = _usuario.id_usuario;
-                        user.id_persona = id_persona;
                         user.Salt = cifrar.Salt;
                         user.Password = cifrar.PasswordCifrado;
-                        user.usuario1 = usuario1;
+                        user.id_persona = id_persona;
+                        user.Tipo = Tipo;
                         user.rol = rol;
+                        user.Mensaje = Mensaje;
+                        user.Pagina = Pagina;
                         dbSuper.Usuarios.AddOrUpdate(user);
                         dbSuper.SaveChanges();
                         Medico medico = new Medico();
@@ -174,7 +178,7 @@ namespace HospitalServices.Clases
                        TELEFONO = pe.telefono,
                        EMAIL = pe.email,
                        GENERO = pe.genero,
-                       TIPO_DE_USUARIO = us.usuario1,
+                       TIPO_DE_USUARIO = us.Tipo,
                        ROL = us.rol,
                        ESPECIALIDAD = me.especialidad,
                        HORARIO = me.horario,
@@ -190,7 +194,7 @@ namespace HospitalServices.Clases
         + pe.telefono + "', '"
         + pe.email + "', '"
         + pe.genero + "', '"
-        + us.usuario1 + "', '"
+        + us.Tipo + "', '"
         + us.rol + "', '"
         + me.especialidad + "', '"
         + me.horario + "', '"

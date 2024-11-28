@@ -21,7 +21,7 @@ namespace HospitalServices.Clases
 
                 dbSuper.Usuarios.Add(usuario);
                 dbSuper.SaveChanges();
-                return "Se grabó el usuario " + usuario.usuario1;
+                return "Se grabó el usuario " ;
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace HospitalServices.Clases
             }
             dbSuper.Usuarios.Remove(_usuario);
             dbSuper.SaveChanges();
-            return "Se eliminó el usuario: " + _usuario.usuario1;
+            return "Se eliminó el usuario: " ;
         }
         public Usuario Consultar(int id)
         {

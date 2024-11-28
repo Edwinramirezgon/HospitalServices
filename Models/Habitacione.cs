@@ -9,10 +9,10 @@
 
 namespace HospitalServices.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using Newtonsoft.Json;
+
     public partial class Habitacione
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,6 +26,7 @@ namespace HospitalServices.Models
         public int id_tipo_habitacion { get; set; }
         public string estado_habitacion { get; set; }
         public string descripcion { get; set; }
+
 
         [JsonIgnore]
         public virtual TipoHabitacione TipoHabitacione { get; set; }

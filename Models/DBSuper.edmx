@@ -13,8 +13,8 @@
           <Property Name="id_hospitalizacion" Type="int" Nullable="false" />
           <Property Name="id_medico" Type="int" Nullable="false" />
           <Property Name="fecha_alta" Type="date" />
-          <Property Name="descripcion_alta" Type="text" />
-          <Property Name="recomendaciones" Type="text" />
+          <Property Name="descripcion_alta" Type="nvarchar(max)" />
+          <Property Name="recomendaciones" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Citas">
           <Key>
@@ -24,7 +24,7 @@
           <Property Name="id_evento" Type="int" Nullable="false" />
           <Property Name="hora_cita" Type="time" Precision="7" />
           <Property Name="especialidad" Type="nvarchar" MaxLength="100" />
-          <Property Name="motivo" Type="text" />
+          <Property Name="motivo" Type="nvarchar(max)" />
           <Property Name="estado_cita" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DetallesFormulas">
@@ -35,7 +35,7 @@
           <Property Name="id_formula" Type="int" Nullable="false" />
           <Property Name="id_medicamento" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" />
-          <Property Name="dosis" Type="text" />
+          <Property Name="dosis" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="EventosMedicos">
           <Key>
@@ -45,7 +45,7 @@
           <Property Name="id_paciente" Type="int" Nullable="false" />
           <Property Name="id_medico" Type="int" Nullable="false" />
           <Property Name="fecha_evento" Type="date" />
-          <Property Name="descripcion" Type="text" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Facturaciones">
           <Key>
@@ -63,12 +63,12 @@
           <Key>
             <PropertyRef Name="id_formula" />
           </Key>
-          <Property Name="id_formula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_formula" Type="int" Nullable="false" />
           <Property Name="id_paciente" Type="int" Nullable="false" />
           <Property Name="id_medico" Type="int" Nullable="false" />
           <Property Name="id_evento" Type="int" Nullable="false" />
           <Property Name="fecha_formula" Type="date" />
-          <Property Name="instrucciones" Type="text" />
+          <Property Name="instrucciones" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Habitaciones">
           <Key>
@@ -78,7 +78,7 @@
           <Property Name="numero_habitacion" Type="int" Nullable="false" />
           <Property Name="id_tipo_habitacion" Type="int" Nullable="false" />
           <Property Name="estado_habitacion" Type="nvarchar" MaxLength="50" />
-          <Property Name="descripcion" Type="text" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Hospitalizaciones">
           <Key>
@@ -95,7 +95,7 @@
           </Key>
           <Property Name="id_medicamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="100" />
-          <Property Name="descripcion" Type="text" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Medicos">
           <Key>
@@ -114,8 +114,8 @@
           <Property Name="id_paciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_persona" Type="bigint" Nullable="false" />
           <Property Name="contacto_emergencia" Type="nvarchar" MaxLength="100" />
-          <Property Name="alergias" Type="text" />
-          <Property Name="antecedentes_medicos" Type="text" />
+          <Property Name="alergias" Type="nvarchar(max)" />
+          <Property Name="antecedentes_medicos" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Pagos">
           <Key>
@@ -170,7 +170,9 @@
           </Key>
           <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_persona" Type="bigint" Nullable="false" />
-          <Property Name="usuario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pagina" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mensaje" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Salt" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="rol" Type="nvarchar" MaxLength="50" />
@@ -559,8 +561,8 @@
           <Property Name="id_hospitalizacion" Type="Int32" Nullable="false" />
           <Property Name="id_medico" Type="Int32" Nullable="false" />
           <Property Name="fecha_alta" Type="DateTime" Precision="0" />
-          <Property Name="descripcion_alta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="recomendaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion_alta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="recomendaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Hospitalizacione" Relationship="Self.FK__Altas__id_hospit__5629CD9C" FromRole="Altas" ToRole="Hospitalizaciones" />
           <NavigationProperty Name="Medico" Relationship="Self.FK__Altas__id_medico__571DF1D5" FromRole="Altas" ToRole="Medicos" />
         </EntityType>
@@ -572,7 +574,7 @@
           <Property Name="id_evento" Type="Int32" Nullable="false" />
           <Property Name="hora_cita" Type="Time" Precision="7" />
           <Property Name="especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="estado_cita" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Citas__id_evento__5812160E" FromRole="Citas" ToRole="EventosMedicos" />
         </EntityType>
@@ -584,7 +586,7 @@
           <Property Name="id_formula" Type="Int32" Nullable="false" />
           <Property Name="id_medicamento" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" />
-          <Property Name="dosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Formula" Relationship="Self.FK__DetallesF__id_fo__59063A47" FromRole="DetallesFormulas" ToRole="Formulas" />
           <NavigationProperty Name="Medicamento" Relationship="Self.FK__DetallesF__id_me__59FA5E80" FromRole="DetallesFormulas" ToRole="Medicamentos" />
         </EntityType>
@@ -596,7 +598,7 @@
           <Property Name="id_paciente" Type="Int32" Nullable="false" />
           <Property Name="id_medico" Type="Int32" Nullable="false" />
           <Property Name="fecha_evento" Type="DateTime" Precision="0" />
-          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__id_evento__5812160E" FromRole="EventosMedicos" ToRole="Citas" />
           <NavigationProperty Name="Medico" Relationship="Self.FK__EventosMe__id_me__5AEE82B9" FromRole="EventosMedicos" ToRole="Medicos" />
           <NavigationProperty Name="Paciente" Relationship="Self.FK__EventosMe__id_pa__5BE2A6F2" FromRole="EventosMedicos" ToRole="Pacientes" />
@@ -624,12 +626,12 @@
           <Key>
             <PropertyRef Name="id_formula" />
           </Key>
-          <Property Name="id_formula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_formula" Type="Int32" Nullable="false" />
           <Property Name="id_paciente" Type="Int32" Nullable="false" />
           <Property Name="id_medico" Type="Int32" Nullable="false" />
           <Property Name="id_evento" Type="Int32" Nullable="false" />
           <Property Name="fecha_formula" Type="DateTime" Precision="0" />
-          <Property Name="instrucciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="instrucciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DetallesFormulas" Relationship="Self.FK__DetallesF__id_fo__59063A47" FromRole="Formulas" ToRole="DetallesFormulas" />
           <NavigationProperty Name="EventosMedico" Relationship="Self.FK__Formulas__id_eve__5EBF139D" FromRole="Formulas" ToRole="EventosMedicos" />
           <NavigationProperty Name="Medico" Relationship="Self.FK__Formulas__id_med__5FB337D6" FromRole="Formulas" ToRole="Medicos" />
@@ -643,7 +645,7 @@
           <Property Name="numero_habitacion" Type="Int32" Nullable="false" />
           <Property Name="id_tipo_habitacion" Type="Int32" Nullable="false" />
           <Property Name="estado_habitacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TipoHabitacione" Relationship="Self.FK__Habitacio__id_ti__619B8048" FromRole="Habitaciones" ToRole="TipoHabitaciones" />
           <NavigationProperty Name="Hospitalizaciones" Relationship="Self.FK__Hospitali__habit__628FA481" FromRole="Habitaciones" ToRole="Hospitalizaciones" />
         </EntityType>
@@ -666,7 +668,7 @@
           </Key>
           <Property Name="id_medicamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DetallesFormulas" Relationship="Self.FK__DetallesF__id_me__59FA5E80" FromRole="Medicamentos" ToRole="DetallesFormulas" />
         </EntityType>
         <EntityType Name="Medico">
@@ -690,8 +692,8 @@
           <Property Name="id_paciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_persona" Type="Int64" Nullable="false" />
           <Property Name="contacto_emergencia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="alergias" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="antecedentes_medicos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="alergias" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="antecedentes_medicos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EventosMedicos" Relationship="Self.FK__EventosMe__id_pa__5BE2A6F2" FromRole="Pacientes" ToRole="EventosMedicos" />
           <NavigationProperty Name="Facturaciones" Relationship="Self.FK__Facturaci__id_pa__5DCAEF64" FromRole="Pacientes" ToRole="Facturaciones" />
           <NavigationProperty Name="Formulas" Relationship="Self.FK__Formulas__id_pac__60A75C0F" FromRole="Pacientes" ToRole="Formulas" />
@@ -758,7 +760,9 @@
           </Key>
           <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_persona" Type="Int64" Nullable="false" />
-          <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pagina" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mensaje" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Salt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1322,7 +1326,9 @@
               <MappingFragment StoreEntitySet="Usuarios">
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="id_persona" ColumnName="id_persona" />
-                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Pagina" ColumnName="Pagina" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Salt" ColumnName="Salt" />
                 <ScalarProperty Name="rol" ColumnName="rol" />

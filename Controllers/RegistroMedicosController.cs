@@ -20,24 +20,24 @@ namespace HospitalServices.Controllers
 
         [HttpPost]
         [Route("Insertar")]
-        public string Insertar([FromBody] Persona persona, int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto, string password)
+        public string Insertar([FromBody] Persona persona, int id_persona, string Tipo, string rol, string Mensaje, string Pagina, string especialidad, string horario, string contacto, string password)
         {
 
             clsRegistroMedicos _persona = new clsRegistroMedicos();
             _persona.persona = persona;
-            return _persona.Insertar(id_persona, usuario1, rol, especialidad, horario, contacto, password);
+            return _persona.Insertar(id_persona, Tipo, rol, Mensaje, Pagina, especialidad, horario, contacto, password);
         }
-
+ 
 
 
         [HttpPut]
         [Route("Actualizar")]
-        public string Actualizar([FromBody] Persona persona, int id_persona, string usuario1, string rol, string especialidad, string horario, string contacto, string password)
+        public string Actualizar([FromBody] Persona persona, int id_persona, string Tipo, string rol, string Mensaje, string Pagina, string especialidad, string horario, string contacto, string password)
         {
 
             clsRegistroMedicos _persona = new clsRegistroMedicos();
             _persona.persona = persona;
-            return _persona.Actualizar(id_persona, usuario1, rol, especialidad, horario, contacto, password);
+            return _persona.Actualizar(id_persona, Tipo, rol, Mensaje, Pagina, especialidad, horario, contacto, password);
         }
 
 
@@ -66,6 +66,8 @@ namespace HospitalServices.Controllers
             clsRegistroMedicos _medicos = new clsRegistroMedicos();
             return _medicos.Consultar2(id);
         }
+
+
 
         [HttpGet]
         [Route("LlenarTabla")]

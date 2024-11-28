@@ -9,10 +9,10 @@
 
 namespace HospitalServices.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using Newtonsoft.Json;
+
     public partial class DetallesFormula
     {
         public int id_detalle_formula { get; set; }
@@ -20,6 +20,7 @@ namespace HospitalServices.Models
         public int id_medicamento { get; set; }
         public Nullable<int> cantidad { get; set; }
         public string dosis { get; set; }
+
 
         [JsonIgnore]
         public virtual Formula Formula { get; set; }

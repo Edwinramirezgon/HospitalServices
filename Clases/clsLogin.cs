@@ -55,9 +55,10 @@ namespace HospitalServices.Clases
                            Usuario = U.id_persona,
                            Autenticado = true,
                            Perfil = pe.nombre + " " + pe.apellido,
-                           PaginaInicio = "HOME.html",
+                           PaginaInicio = U.Pagina,                          
                            Token = token,
-                           Mensaje = ""
+                           Tipo= U.Tipo,
+                           Mensaje = U.Mensaje
                        };
             }
             else
