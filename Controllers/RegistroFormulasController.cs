@@ -30,5 +30,13 @@ namespace HospitalServices.Controllers
             clsRegistroFormulas medicamento = new clsRegistroFormulas();
             return medicamento.LlenarCombo();
         }
+
+        [HttpGet]
+        [Route("LlenarTabla")]
+        public IQueryable LlenarTabla(string id)
+        {
+            clsRegistroFormulas evento = new clsRegistroFormulas();
+            return evento.LLenarTabla(id);
+        }
     }
 }

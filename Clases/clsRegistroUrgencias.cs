@@ -129,7 +129,7 @@ namespace HospitalServices.Clases
         + ev.id_paciente + "', '"
          + ev.id_medico + "', '"
         + ev.fecha_evento + "', '"       
-        + ev.descripcion.Substring(0,500) + "', '"    
+        + ev.descripcion + "', '"    
         + ur.estado_urgencia + "')\">EDITAR</button>",
 
                        ELIMINAR = "<button type=\"button\" id=\"btnEliminar\" class=\"btn-block btn-lg btn-danger\" onclick=\"Eliminar('"

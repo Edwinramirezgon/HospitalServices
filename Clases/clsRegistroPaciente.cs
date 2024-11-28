@@ -128,8 +128,8 @@ namespace HospitalServices.Clases
         + pe.email + "', '"
         + pe.genero + "', '"
         + pa.contacto_emergencia + "', '"
-        + pa.alergias.Substring(0,500) + "', '"
-        + pa.antecedentes_medicos.Substring(0,500) + "')\">EDITAR</button>",
+        + pa.alergias + "', '"
+        + pa.antecedentes_medicos + "')\">EDITAR</button>",
 
                      
 

@@ -51,13 +51,7 @@ namespace HospitalServices.Controllers
             return _evento.Consultar(id);
         }
 
-        [HttpGet]
-        [Route("LlenarTabla")]
-        public IQueryable LlenarTabla()
-        {
-           clsEventosMedico evento = new clsEventosMedico();
-            return evento.LLenarTabla();
-        }
+       
         
     }
 
