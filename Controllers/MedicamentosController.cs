@@ -49,6 +49,6 @@ namespace HospitalServices.Controllers
 
             clsMedicamento _medicamento = new clsMedicamento();
             return _medicamento.Consultar(id);
-        }
+        }        
     }
 }

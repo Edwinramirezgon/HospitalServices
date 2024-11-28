@@ -67,6 +67,6 @@ namespace HospitalServices.Clases
         {
 
             return dbSuper.Medicos.FirstOrDefault(c => c.id_medico == id);
-        }
+        }        
     }
 }
